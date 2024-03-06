@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -14,6 +15,7 @@ public class Controller : MonoBehaviour
     // float yRotation;
     private float ySpeed;
     private bool flip;
+
     [SerializeField] public float jumpSpeed = 10;
     [SerializeField] private float _speed = 5;
     // Start is called before the first frame update
@@ -34,30 +36,30 @@ public class Controller : MonoBehaviour
         // xRotation = Mathf.Clamp(xRotation, -90f, 90f);
         // transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         // orientation.rotation = Quaternion.Euler(0, yRotation, 0);   
-
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         if(Input.GetKeyDown("q")){
             flip = !flip;
         }
-        if(_controller.isGrounded) {
-            
-            if(!flip) {
-                if(Input.GetKeyDown("space")) {
-                    ySpeed = jumpSpeed;
-                }
-                
-            } else {
-                if(Input.GetKeyDown("space")) {
-                    ySpeed = -jumpSpeed;
-                }
+        if (((_controller.collisionFlags & CollisionFlags.Above) != 0) & flip)
+        {
+            if(Input.GetKeyDown("space")) {
+                ySpeed -= jumpSpeed;
+            } else if(ySpeed > 0) {
+                ySpeed = 0.1f;
             }
-
+        } else if(_controller.isGrounded & !flip) {
+            if(Input.GetKeyDown("space")) {
+                ySpeed += jumpSpeed;
+            } else if(ySpeed < 0) {
+                ySpeed = -0.1f;
+            }
         } else if (!flip) {
             ySpeed += Physics.gravity.y * Time.deltaTime;
         } else {
             ySpeed -= Physics.gravity.y * Time.deltaTime;
         } 
         move.y = ySpeed;
+        Debug.Log(ySpeed);
         _controller.Move(move * Time.deltaTime * _speed);
         
     }
