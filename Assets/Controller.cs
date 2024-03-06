@@ -23,10 +23,22 @@ public class Controller : MonoBehaviour
         UnityEngine.Cursor.visible = false;
         _controller = GetComponent<CharacterController>();
     }
+    public void OnCollisionEnter(Collision collision){
+        Debug.Log(collision.contacts[0].normal);
+    }
+    // public void OnCollisionEnter(Collision collision){
+    //     Vector3 normal = collision.contacts[0].normal;
+    //     if(normal == cube.up) {
+
+    //     } else if(normal == cube.down) {
+
+    //     }
+    // }
 
     // Update is called once per frame
     void Update()
     {
+        
         //float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
         //float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
         // yRotation += mouseX;
@@ -46,19 +58,28 @@ public class Controller : MonoBehaviour
                     ySpeed = jumpSpeed;
                 }
                 
+            } 
+
+        } else if (!flip) {
+            ySpeed += Physics.gravity.y * Time.deltaTime;
+        } 
+        if(flip) {
+            //Need way to check for collision on top using temp solution
+            if(true){
+
+            
+                ySpeed -= Physics.gravity.y * Time.deltaTime;
             } else {
                 if(Input.GetKeyDown("space")) {
                     ySpeed = -jumpSpeed;
                 }
             }
-
-        } else if (!flip) {
-            ySpeed += Physics.gravity.y * Time.deltaTime;
-        } else {
-            ySpeed -= Physics.gravity.y * Time.deltaTime;
-        } 
+        }
+        
         move.y = ySpeed;
+        //Debug.Log(move);
         _controller.Move(move * Time.deltaTime * _speed);
+        
         
     }
 
