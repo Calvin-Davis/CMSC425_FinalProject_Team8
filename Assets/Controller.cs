@@ -45,13 +45,13 @@ public class Controller : MonoBehaviour
             if(Input.GetKeyDown("space")) {
                 ySpeed -= jumpSpeed;
             } else if(ySpeed > 0) {
-                ySpeed = 0.1f;
+                ySpeed = 0.2f;
             }
         } else if(_controller.isGrounded & !flip) {
             if(Input.GetKeyDown("space")) {
                 ySpeed += jumpSpeed;
             } else if(ySpeed < 0) {
-                ySpeed = -0.1f;
+                ySpeed = -0.2f;
             }
         } else if (!flip) {
             ySpeed += Physics.gravity.y * Time.deltaTime;
