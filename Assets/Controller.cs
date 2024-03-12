@@ -66,14 +66,16 @@ public class Controller : MonoBehaviour
             } else if(ySpeed < 0) {
                 ySpeed = -0.2f;
             }
-        } else if ((((_controller.collisionFlags & CollisionFlags.Above) != 0) & !flip) || (_controller.isGrounded & flip)) {
+        } else if (((_controller.collisionFlags & CollisionFlags.Above) != 0) & !flip & ySpeed > 0) {
             //Used for edge case where someone flips gravity with high 
             //momentum right before hitting a roof/floor
             //Note at this point in this code when something 
             //collides where corners just barely touch leading to
             // May fix itself by changing character model
-            ySpeed = 0;
-        } 
+            ySpeed = -0.1f;
+        } else if(_controller.isGrounded & flip & ySpeed < 0) {
+            ySpeed = 0.1f;
+        }
         else if (!flip) {
             ySpeed += Physics.gravity.y * Time.deltaTime;
         } else {
