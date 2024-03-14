@@ -15,6 +15,7 @@ public class Controller : MonoBehaviour
     // float yRotation;
     private float ySpeed;
     private bool flip;
+    
 
     [SerializeField] public float jumpSpeed = 10;
     [SerializeField] private float _speed = 5;
@@ -25,8 +26,12 @@ public class Controller : MonoBehaviour
         UnityEngine.Cursor.visible = false;
         _controller = GetComponent<CharacterController>();
     }
-    public void OnCollisionEnter(Collision collision){
-        Debug.Log(collision.contacts[0].normal);
+    public void OnTriggerEnter(Collider other){
+        if(other.name == "Teleport") {
+            Debug.Log("Teleporting");
+            
+            //StartCoroutine(Teleport(0, 1, 0));
+        }
     }
     // public void OnCollisionEnter(Collision collision){
     //     Vector3 normal = collision.contacts[0].normal;
@@ -82,10 +87,15 @@ public class Controller : MonoBehaviour
             ySpeed -= Physics.gravity.y * Time.deltaTime;
         } 
         move.y = ySpeed;
-        Debug.Log(ySpeed);
+        Physics.SyncTransforms();
         _controller.Move(move * Time.deltaTime * _speed);
         
         
     }
-
+    IEnumerator Teleport(int x, int y, int z) {
+        transform.position = new Vector3(x, y, z);
+        
+        yield return null;
+    
+    }
 }
