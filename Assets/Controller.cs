@@ -15,6 +15,8 @@ public class Controller : MonoBehaviour
     // float yRotation;
     private float ySpeed;
     private bool flip;
+
+    public GameObject pivot;
     
 
     [SerializeField] public float jumpSpeed = 10;
@@ -56,6 +58,7 @@ public class Controller : MonoBehaviour
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         if(Input.GetKeyDown("q")){
             flip = !flip;
+            pivot.transform.Rotate(0.0f,0.0f,180.0f);
         }
         
         if (((_controller.collisionFlags & CollisionFlags.Above) != 0) & flip)
