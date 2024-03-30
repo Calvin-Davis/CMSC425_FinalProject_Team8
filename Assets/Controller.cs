@@ -13,7 +13,9 @@ public class Controller : MonoBehaviour
     // public Transform orientation;
     // float xRotation;
     // float yRotation;
+    private float xSpeed;
     private float ySpeed;
+    private float zSpeed;
     private bool flip;
 
     public GameObject pivot;
@@ -55,7 +57,12 @@ public class Controller : MonoBehaviour
         // xRotation = Mathf.Clamp(xRotation, -90f, 90f);
         // transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         // orientation.rotation = Quaternion.Euler(0, yRotation, 0);   
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        float xSpeed = Input.GetAxis("Horizontal");
+        if (flip)
+            xSpeed *= -1;
+        float zSpeed = Input.GetAxis("Vertical");
+        Vector3 move = new Vector3(xSpeed, 0, zSpeed);
+        
         if(Input.GetKeyDown("q")){
             flip = !flip;
             pivot.transform.Rotate(0.0f,0.0f,180.0f);
