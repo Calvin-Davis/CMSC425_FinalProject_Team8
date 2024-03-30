@@ -18,6 +18,7 @@ public class Spike : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Respawn");
         SceneManager.LoadScene("Respawn");
     }
 }
