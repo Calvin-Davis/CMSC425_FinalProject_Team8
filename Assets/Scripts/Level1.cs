@@ -7,6 +7,7 @@ public class Level1 : MonoBehaviour
 {
     // Start is called before the first frame update
     public bool flip = false;
+    CharacterController player;
     [SerializeField] public float _speed = 5;
     void Start()
     {

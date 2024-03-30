@@ -56,8 +56,14 @@ public class Controller : MonoBehaviour
         // xRotation += mouseY;
         // xRotation = Mathf.Clamp(xRotation, -90f, 90f);
         // transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        // orientation.rotation = Quaternion.Euler(0, yRotation, 0);   
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        // orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        Vector3 move = new Vector3(0,0,0);
+        if(!flip) {
+            move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        } else {
+            move = new Vector3(-Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        }
+
         if(Input.GetKeyDown("q")){
             //flip = !flip;
             pivot.transform.Rotate(0.0f,0.0f,180.0f);
