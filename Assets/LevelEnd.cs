@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class Spike : MonoBehaviour
+
+public class LevelEnd : MonoBehaviour
 {
     // Start is called before the first frame update
-    public string level;
+    public string Level;
     void Start()
     {
         
@@ -19,8 +20,7 @@ public class Spike : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(other.name == "CC") {
-            
-            SceneManager.LoadScene("Respawn");
+            SceneManager.LoadScene(Level);
         }
         
     }

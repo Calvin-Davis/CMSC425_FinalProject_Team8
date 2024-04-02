@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class Spike : MonoBehaviour
+
+public class LevelSelect : MonoBehaviour
 {
     // Start is called before the first frame update
-    public string level;
+    public GameObject LS;
     void Start()
     {
         
@@ -16,12 +17,13 @@ public class Spike : MonoBehaviour
     {
         
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.name == "CC") {
-            
-            SceneManager.LoadScene("Respawn");
-        }
-        
+    public void OnClick1() {
+        SceneManager.LoadScene("Test1Jacob");
+    }
+    public void OnClick2() {
+        SceneManager.LoadScene("Level 2");
+    }
+    public void OnClickBack() {
+        LS.SetActive(false);
     }
 }

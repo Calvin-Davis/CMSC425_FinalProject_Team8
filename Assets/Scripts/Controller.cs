@@ -74,13 +74,13 @@ public class Controller : MonoBehaviour
             if(Input.GetKeyDown("space")) {
                 ySpeed -= jumpSpeed;
             } else if(ySpeed > 0) {
-                ySpeed = 0.2f;
+                ySpeed = 0.5f;
             }
         } else if(_controller.isGrounded & !flip) {
             if(Input.GetKeyDown("space")) {
                 ySpeed += jumpSpeed;
             } else if(ySpeed < 0) {
-                ySpeed = -0.2f;
+                ySpeed = -0.5f;
             }
         } else if (((_controller.collisionFlags & CollisionFlags.Above) != 0) & !flip & ySpeed > 0) {
             //Used for edge case where someone flips gravity with high 
