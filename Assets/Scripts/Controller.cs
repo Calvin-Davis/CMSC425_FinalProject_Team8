@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -14,13 +15,13 @@ public class Controller : MonoBehaviour
     // float xRotation;
     // float yRotation;
     private float ySpeed;
-    private bool flip;
+    public GameObject parent;
 
     public GameObject pivot;
     
 
     [SerializeField] public float jumpSpeed = 10;
-    [SerializeField] private float _speed = 5;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,17 +48,24 @@ public class Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        float _speed = parent.GetComponent<Level1>().getSpeed();
+        bool flip = parent.GetComponent<Level1>().getFlip();
         //float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
         //float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
         // yRotation += mouseX;
         // xRotation += mouseY;
         // xRotation = Mathf.Clamp(xRotation, -90f, 90f);
         // transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        // orientation.rotation = Quaternion.Euler(0, yRotation, 0);   
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        // orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        Vector3 move = new Vector3(0,0,0);
+        if(!flip) {
+            move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        } else {
+            move = new Vector3(-Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        }
+
         if(Input.GetKeyDown("q")){
-            flip = !flip;
+            //flip = !flip;
             pivot.transform.Rotate(0.0f,0.0f,180.0f);
         }
         
@@ -66,13 +74,13 @@ public class Controller : MonoBehaviour
             if(Input.GetKeyDown("space")) {
                 ySpeed -= jumpSpeed;
             } else if(ySpeed > 0) {
-                ySpeed = 0.2f;
+                ySpeed = 0.5f;
             }
         } else if(_controller.isGrounded & !flip) {
             if(Input.GetKeyDown("space")) {
                 ySpeed += jumpSpeed;
             } else if(ySpeed < 0) {
-                ySpeed = -0.2f;
+                ySpeed = -0.5f;
             }
         } else if (((_controller.collisionFlags & CollisionFlags.Above) != 0) & !flip & ySpeed > 0) {
             //Used for edge case where someone flips gravity with high 
