@@ -2,9 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Level1 : MonoBehaviour
 {
+    public string nameOfNextLevel;
+
     // Start is called before the first frame update
     public bool flip = false;
     CharacterController player;

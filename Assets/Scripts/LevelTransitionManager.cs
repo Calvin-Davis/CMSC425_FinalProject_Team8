@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RespawnManager : MonoBehaviour
+public class LevelTransitionManager : MonoBehaviour
 {
-    public void OnClickMainMenu() {
+    public void OnClickMainMenu()
+    {
         Debug.Log("Respawning");
         SceneManager.LoadScene("MainMenu");
     }
-    public void OnClickRespawn() {
-        Debug.Log("Respawning");
-        SceneManager.LoadScene(PlayerStats.ScenePlayerDiedOn);
-        
+    public void OnClickNext()
+    {
+        Debug.Log("Going to next level");
+        SceneManager.LoadScene(PlayerStats.PlayerNextLevel);
+
     }
-    public void OnClickQuit() {
+    public void OnClickQuit()
+    {
         Debug.Log("Respawning");
         Application.Quit();
     }
@@ -28,6 +31,6 @@ public class RespawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

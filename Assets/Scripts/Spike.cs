@@ -18,7 +18,11 @@ public class Spike : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Respawn");
-        SceneManager.LoadScene("Respawn");
+        if (other.gameObject.tag == "self")
+        {
+            Debug.Log("Respawn");
+            PlayerStats.ScenePlayerDiedOn = this.gameObject.scene.name;
+            SceneManager.LoadScene("Respawn");
+        }
     }
 }

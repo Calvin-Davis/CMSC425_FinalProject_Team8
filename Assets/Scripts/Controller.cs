@@ -66,7 +66,7 @@ public class Controller : MonoBehaviour
 
         if(Input.GetKeyDown("q")){
             //flip = !flip;
-            pivot.transform.Rotate(0.0f,0.0f,180.0f);
+            pivot.transform.Rotate(0.0f, 0.0f,180.0f);
         }
         
         if (((_controller.collisionFlags & CollisionFlags.Above) != 0) & flip)
