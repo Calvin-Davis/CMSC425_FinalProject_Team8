@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class MainMenuManager : MonoBehaviour
 {
     public GameObject LevelSelect;
-    public void OnClickPlay() {
-        SceneManager.LoadScene("Test1Jacob");
+    public void OnClickPlay(string scene) {
+        SceneManager.LoadScene(scene);
     }
     public void OnClickLS() {
         LevelSelect.SetActive(true);
