@@ -18,7 +18,7 @@ public class LevelTransitionManager : MonoBehaviour
     }
     public void OnClickQuit()
     {
-        Debug.Log("Respawning");
+        Debug.Log("Quitting");
         Application.Quit();
     }
     // Start is called before the first frame update
