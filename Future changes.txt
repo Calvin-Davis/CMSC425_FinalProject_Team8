@@ -1,6 +1,5 @@
 Changes still to be made
 add camera movement following mouse movement
-add limited flips
 Lever sound
 Button click sound
 
