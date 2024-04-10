@@ -1110,8 +1110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f79dcf30972da4595781d4758dcc96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wipeTime: 2
-  waitTime: 3
+  wipeTime: 1
+  waitTime: 2
   betweenTime: 1
   iterations: 2
   motion: {x: 3, y: 0, z: 0}
