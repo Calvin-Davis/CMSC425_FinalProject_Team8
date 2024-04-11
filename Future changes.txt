@@ -1,0 +1,12 @@
+Changes still to be made
+add camera movement following mouse movement
+add limited flips
+Lever sound
+Button click sound
+
+
+Possible changes
+picking up blocks
+pushing block
+jumping with block on head
+fan type object that can push player/block
