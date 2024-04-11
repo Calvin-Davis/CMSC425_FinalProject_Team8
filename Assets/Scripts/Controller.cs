@@ -18,7 +18,9 @@ public class Controller : MonoBehaviour
     public GameObject parent;
 
     public GameObject pivot;
-    
+    public float rotationSpeed = 2;
+    Vector2 turn;
+    Vector3 forwardDirection, sideDirection;
 
     [SerializeField] public float jumpSpeed = 10;
 
@@ -46,8 +48,17 @@ public class Controller : MonoBehaviour
     // }
 
     // Update is called once per frame
+
+    void rotateController() {
+        turn.x += Input.GetAxis("Mouse X");
+        transform.localRotation = Quaternion.Euler(0, rotationSpeed * turn.x, 0);
+        Quaternion rotation = Quaternion.Euler(0, transform.localEulerAngles.y, 0);
+        forwardDirection = rotation * Vector3.forward;
+        sideDirection = Vector3.Cross(forwardDirection, Vector3.up);
+    }
     void Update()
     {
+        rotateController();
         float _speed = parent.GetComponent<Level1>().getSpeed();
         bool flip = parent.GetComponent<Level1>().getFlip();
         //float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
@@ -57,13 +68,14 @@ public class Controller : MonoBehaviour
         // xRotation = Mathf.Clamp(xRotation, -90f, 90f);
         // transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         // orientation.rotation = Quaternion.Euler(0, yRotation, 0);
-        Vector3 move = new Vector3(0,0,0);
-        if(!flip) {
-            move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        } else {
-            move = new Vector3(-Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        }
+        
+        Vector3 forwardMove = Vector3.Scale(new Vector3(Input.GetAxis("Vertical"), 0, Input.GetAxis("Vertical")), forwardDirection);
+        Vector3 sideMove = Vector3.Scale(new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Horizontal")), sideDirection);
 
+        // if (flip)
+        //     forwardMove *= -1;
+        Vector3 move = forwardMove - sideMove;
+        
         if(Input.GetKeyDown("q")){
             //flip = !flip;
             pivot.transform.Rotate(0.0f, 0.0f,180.0f);
