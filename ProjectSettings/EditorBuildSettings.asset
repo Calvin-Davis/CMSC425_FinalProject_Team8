@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/IntroCutscene.unity
     guid: 79fff16be542d9c449eb5258c284b459
+  - enabled: 1
+    path: Assets/Scenes/OutroCutscene.unity
+    guid: dc09780825a612a4dab8619e3d3caa93
+  - enabled: 1
+    path: Assets/Scenes/EndScreen.unity
+    guid: 469c948b20e9a5c42a0f6ff4ab6c9f6c
   m_configObjects: {}

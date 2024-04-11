@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9b8b52e661c95364e84e5191ff12c86f
+guid: c77049a6f5dcc25438af171c0c49283c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,10 +7,25 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: craft_speederDMat
-    second: {fileID: 2100000, guid: ae9b4113a14fb3c4285656b8bdd63d1c, type: 2}
+      name: dark
+    second: {fileID: 2100000, guid: 661d2f5aa4a8fb74faec609a2c006558, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal
+    second: {fileID: 2100000, guid: bc86f8de89e97a541bb6bbb7caacb8d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metalDark
+    second: {fileID: 2100000, guid: 61760c2966449584e98431152a968735, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metalRed
+    second: {fileID: 2100000, guid: c32a87d8c8e20934cb28bb960a772d62, type: 2}
   materials:
-    materialImportMode: 0
+    materialImportMode: 2
     materialName: 0
     materialSearch: 1
     materialLocation: 1
