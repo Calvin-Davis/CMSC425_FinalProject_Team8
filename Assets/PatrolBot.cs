@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,13 +11,14 @@ public class PatrolBot : MonoBehaviour
     private NavMeshAgent agent;
     public bool isCyclic = true;
     private int inverse = 1;
-    
+    public float botSpeed = 5;
     
     // Start is called before the first frame update
     void Start()
     {
         idx = 0;
         agent = GetComponent<NavMeshAgent>();
+        agent.speed = botSpeed;
         agent.destination = goals[idx].position;
     }
 
@@ -41,7 +43,6 @@ public class PatrolBot : MonoBehaviour
                 inverse = 1;
             }
             agent.destination = goals[idx].position;
-            Debug.Log(goals[idx].position);
         }
     }
 }
