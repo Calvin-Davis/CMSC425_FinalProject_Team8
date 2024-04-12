@@ -1048,6 +1048,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1073359268963944052}
     m_Modifications:
     - target: {fileID: 3031645494412361535, guid: d604ebab4073598498a9d97efebb158d, type: 3}
+      propertyPath: isCyclic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3031645494412361535, guid: d604ebab4073598498a9d97efebb158d, type: 3}
       propertyPath: goals.Array.data[0]
       value: 
       objectReference: {fileID: 1762478313}
