@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class Door : MonoBehaviour
+public class TutorialCollider : MonoBehaviour
 {
-    // Use this to indicate the name of the scene that holds the next level
-    public string nameOfNextLevel;
+    public TutorialMessages controller;
 
     // Start is called before the first frame update
     void Start()
@@ -24,9 +22,8 @@ public class Door : MonoBehaviour
     {
         if (other.gameObject.tag == "self")
         {
-            Debug.Log("Level complete");
-            PlayerStats.PlayerNextLevel = nameOfNextLevel;
-            SceneManager.LoadScene("LevelTransitionMenu");
+            controller.progress();
+            Destroy(this);
         }
     }
 }
