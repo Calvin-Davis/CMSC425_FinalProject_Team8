@@ -5,17 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class RespawnManager : MonoBehaviour
 {
+    public string level = "MainMenu";
+    public void UpdateRespawnLevel(string levelname) {
+        level = levelname;
+    }
     public void OnClickMainMenu() {
-        Debug.Log("Respawning");
         SceneManager.LoadScene("MainMenu");
     }
     public void OnClickRespawn() {
         Debug.Log("Respawning");
-        SceneManager.LoadScene("Test1Jacob");
+        SceneManager.LoadScene(PlayerStats.ScenePlayerDiedOn);
         
     }
     public void OnClickQuit() {
-        Debug.Log("Respawning");
         Application.Quit();
     }
     // Start is called before the first frame update

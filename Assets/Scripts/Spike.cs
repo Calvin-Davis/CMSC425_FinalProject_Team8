@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class Spike : MonoBehaviour
 {
     // Start is called before the first frame update
-
+    public string level;
     void Start()
     {
         
@@ -18,7 +18,11 @@ public class Spike : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Respawn");
-        SceneManager.LoadScene("Respawn");
+        if (other.gameObject.tag == "self")
+        {
+            Debug.Log("Respawn");
+            PlayerStats.ScenePlayerDiedOn = this.gameObject.scene.name;
+            SceneManager.LoadScene("Respawn");
+        }
     }
 }

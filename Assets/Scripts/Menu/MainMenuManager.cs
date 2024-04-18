@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class MainMenuManager : MonoBehaviour
 {
     public GameObject LevelSelect;
-    public void OnClickPlay() {
-        SceneManager.LoadScene("Test1Jacob");
+    public void OnClickPlay(string scene) {
+        SceneManager.LoadScene(scene);
     }
     public void OnClickLS() {
         LevelSelect.SetActive(true);
@@ -15,9 +15,12 @@ public class MainMenuManager : MonoBehaviour
     public void OnClickQuit() {
         Application.Quit();
     }
-    public void OnClickBack() {
+
+    public void OnClickBack()
+    {
         LevelSelect.SetActive(false);
     }
+
     // Start is called before the first frame update
     void Start()
     {

@@ -1,0 +1,26 @@
+---------------------------------------------------
+----- NEEDS TO BE DONE STILL (DUE 5/6 at 6AM) -----
+---------------------------------------------------
+
+- Either fix or nix the "pushing block" feature; it is not necessary and can be removed, but can be implemented into level design if it is polished if we want.
+- Change gravity switching to only be possible either when touching the ground or once after jumping
+- More levels
+- Functional camera
+- Script to populate an area with spikes
+- Walking animation (Doesn't need to be fancy)
+
+- Models still needed to be added to game
+--- Spikes
+--- Door (that opens when you get near it)
+--- Lever
+--- Gravity cube
+--- Teleporter
+
+- Sound implementation
+--- Footsteps, jumping/landing, flipping gravity, clicking menu buttons, flipping lever, using teleporter, completing a level, dying
+--- Sound for when a zone robot notices you, sound for when it gives up (aggro/de-aggro)
+--- Background music
+
+- Attribution for spaceship model (idk how this works)
+- Bake lighting at high quality
+- Playtesting and bug fixing
