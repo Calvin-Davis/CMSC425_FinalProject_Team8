@@ -1312,7 +1312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6533369952195052636, guid: 511dad0c271ad184f9c097153c5a109c, type: 3}
       propertyPath: nameOfNextLevel
-      value: OutroCutscene
+      value: Level4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

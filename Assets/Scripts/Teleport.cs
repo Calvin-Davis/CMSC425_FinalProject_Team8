@@ -8,6 +8,11 @@ public class Teleport : MonoBehaviour
     [SerializeField] public float x = 0;
     [SerializeField] public float y = 1;
     [SerializeField] public float z = 0;
+
+    public bool useTransform = false;
+
+    public Transform destination;
+
     void Start()
     {
         
@@ -18,9 +23,14 @@ public class Teleport : MonoBehaviour
     {
         
     }
-     private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.transform.position);
-        other.transform.position = new Vector3(x, y, z);
+        if (!useTransform)
+        {
+            other.transform.position = new Vector3(x, y, z);
+        } else
+        {
+            other.transform.position = destination.position;
+        }
     }
 }

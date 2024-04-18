@@ -16,6 +16,11 @@ public class MainMenuManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void OnClickBack()
+    {
+        LevelSelect.SetActive(false);
+    }
+
     // Start is called before the first frame update
     void Start()
     {

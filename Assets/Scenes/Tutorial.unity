@@ -2647,14 +2647,15 @@ MonoBehaviour:
   - Let's get out of here! The escape pods are ALL THE WAY on the other side of the
     ship. Move with WASD or the arrow keys!
   - Press space to jump.
-  - This isn't a problem for us! We have the ship's gravity remote! Press Q to flip
-    the gravity!
+  - These spikes aren't a problem for us! We have the ship's gravity remote! Press
+    Q to flip the gravity!
   - This looks tricky... Oh! Pull the lever! These can make platforms appear.
   - Great! Let's flip again. Press Q.
   - Well, we're not getting around that. Use the teleporter on the right!
   - Uh oh. Those are Roguebots. The blue ones aren't too bright; they just move back
     and forth. Don't let them touch you!
-  - These are another story. The red ones will chase you if you get too close!
+  - The red ones will chase you if you get too close! Also, none of the Roguebots
+    are affected by gravity flipping!
   - Let's flip again, the door is up there. Ignore the clutter, we haven't kept this
     place super clean...
   - Great! You know everything you need to now! Let's get going--head through that
