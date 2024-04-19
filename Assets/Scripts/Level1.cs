@@ -10,7 +10,7 @@ public class Level1 : MonoBehaviour
     public string nameOfNextLevel;
 
     public bool flip = false;
-    public CharacterController playerModel;
+    public CharacterController CC;
     [SerializeField] public float _speed = 5;
     int flipCount = 0;
 
@@ -27,13 +27,13 @@ public class Level1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerModel.isGrounded || ((playerModel.collisionFlags & CollisionFlags.Above) != 0)){
+        if(CC.isGrounded || ((CC.collisionFlags & CollisionFlags.Above) != 0)){
             flipCount = 0;
         }
         if(Input.GetKeyDown("q") && flipCount == 0){
             flipCount += 1;
             flip = !flip;
-            playerModel.transform.localEulerAngles = new Vector3(180+ playerModel.transform.localEulerAngles.x, 180 + playerModel.transform.localEulerAngles.y, playerModel.transform.localEulerAngles.z);
+            CC.transform.localEulerAngles = new Vector3(180+ CC.transform.localEulerAngles.x, 180 + CC.transform.localEulerAngles.y, CC.transform.localEulerAngles.z);
             camController.swapCams();
         }
     }
