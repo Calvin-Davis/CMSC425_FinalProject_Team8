@@ -16,6 +16,8 @@ public class ScreenWipe : MonoBehaviour
 
     public GameObject receiverObject;
     private ISignalReceiver receiver;
+    public GameObject canvasReceiverObject;
+    private ISignalReceiver canvasReceiver;
 
     private Vector3 basePos;
     private float progress;
@@ -24,6 +26,7 @@ public class ScreenWipe : MonoBehaviour
     void Start()
     {
         receiver = receiverObject.GetComponent<ISignalReceiver>();
+        canvasReceiver = canvasReceiverObject.GetComponent<ISignalReceiver>();
         basePos = transform.localPosition;
         StartCoroutine(DoTheThing());
     }
@@ -39,7 +42,9 @@ public class ScreenWipe : MonoBehaviour
         for (int i = 0; i < iterations; i++)
         {
             yield return StartCoroutine(Wipe(false));
+            canvasReceiver.respondToSignal(i);
             yield return new WaitForSeconds(waitTime);
+            canvasReceiver.respondToSignal(i);
             yield return StartCoroutine(Wipe(true));
             receiver.respondToSignal(i);
             yield return new WaitForSeconds(betweenTime);

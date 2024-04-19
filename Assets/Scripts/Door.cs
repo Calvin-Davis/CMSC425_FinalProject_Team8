@@ -22,8 +22,11 @@ public class Door : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Level complete");
-        PlayerStats.PlayerNextLevel = nameOfNextLevel;
-        SceneManager.LoadScene("LevelTransitionMenu");
+        if (other.gameObject.tag == "self")
+        {
+            Debug.Log("Level complete");
+            PlayerStats.PlayerNextLevel = nameOfNextLevel;
+            SceneManager.LoadScene("LevelTransitionMenu");
+        }
     }
 }

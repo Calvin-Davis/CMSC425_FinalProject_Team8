@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5560382472255901305}
-  - component: {fileID: 5302284170808417370}
   - component: {fileID: 7508909290054965179}
   - component: {fileID: 5104447492412662783}
   - component: {fileID: 7144646231072343207}
@@ -37,27 +36,6 @@ Transform:
   - {fileID: 21529964555801025}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5302284170808417370
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5745945350015495642}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &7508909290054965179
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -192,10 +170,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6652725513331149018, guid: 4b6dc41bf9d114395ad6278823b38acd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 94615278e530d814182e959013b2cb59, type: 2}
+    - target: {fileID: -4157524182732408741, guid: 4b6dc41bf9d114395ad6278823b38acd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 94615278e530d814182e959013b2cb59, type: 2}
+    - target: {fileID: -3998496141212402058, guid: 4b6dc41bf9d114395ad6278823b38acd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 94615278e530d814182e959013b2cb59, type: 2}
     - target: {fileID: 919132149155446097, guid: 4b6dc41bf9d114395ad6278823b38acd, type: 3}
       propertyPath: m_Name
       value: EVEL
       objectReference: {fileID: 0}
+    - target: {fileID: 7226199502932971978, guid: 4b6dc41bf9d114395ad6278823b38acd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 94615278e530d814182e959013b2cb59, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
