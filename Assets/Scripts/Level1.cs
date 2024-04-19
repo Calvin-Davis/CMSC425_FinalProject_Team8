@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,14 +9,13 @@ public class Level1 : MonoBehaviour
 {
     public string nameOfNextLevel;
 
-    // Start is called before the first frame update
     public bool flip = false;
-    CharacterController player;
+    public Transform playerModel;
     [SerializeField] public float _speed = 5;
-    void Start()
-    {
-        
-    }
+
+    // Add reference to our CamController script
+    public CamController camController;
+
     public bool getFlip() {
         return flip;
     }
@@ -28,6 +28,8 @@ public class Level1 : MonoBehaviour
     {
         if(Input.GetKeyDown("q")){
             flip = !flip;
+            playerModel.localEulerAngles = new Vector3(180+ playerModel.localEulerAngles.x, 180 + playerModel.localEulerAngles.y, playerModel.localEulerAngles.z);
+            camController.swapCams();
         }
     }
 }
