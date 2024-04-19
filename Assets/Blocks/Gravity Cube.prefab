@@ -227,6 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _controller: {fileID: 4203480638467239673}
   parent: {fileID: 0}
+  startFlipped: 0
 --- !u!143 &4203480638467239673
 CharacterController:
   m_ObjectHideFlags: 0
