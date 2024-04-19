@@ -7,7 +7,9 @@ public class Gravity : MonoBehaviour
 {
     public CharacterController _controller;
     public GameObject parent;
+    public bool startFlipped;
     private float ySpeed;
+
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,8 @@ public class Gravity : MonoBehaviour
     {
         float _speed = parent.GetComponent<Level1>().getSpeed();
         bool flip = parent.GetComponent<Level1>().getFlip();
+        if (startFlipped)
+            flip = !flip;
         Vector3 move = new Vector3(0, 0, 0);
         if (((_controller.collisionFlags & CollisionFlags.Above) != 0) & flip)
         {

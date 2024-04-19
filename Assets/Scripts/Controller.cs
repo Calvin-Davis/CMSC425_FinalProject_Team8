@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -9,15 +10,11 @@ using UnityEngine.UIElements;
 public class Controller : MonoBehaviour
 {
     private CharacterController _controller;
-    // public float sensX;
-    // public float sensY;
-    // public Transform orientation;
-    // float xRotation;
-    // float yRotation;
     private float ySpeed;
     public GameObject parent;
 
-    public GameObject pivot;
+    public Transform camera;
+
     public float rotationSpeed = 2;
     Vector2 turn;
     Vector3 forwardDirection, sideDirection;
@@ -35,25 +32,14 @@ public class Controller : MonoBehaviour
         if(other.name == "Teleport") {
             Debug.Log("Teleporting");
             
-            //StartCoroutine(Teleport(0, 1, 0));
         }
     }
-    // public void OnCollisionEnter(Collision collision){
-    //     Vector3 normal = collision.contacts[0].normal;
-    //     if(normal == cube.up) {
 
-    //     } else if(normal == cube.down) {
-
-    //     }
-    // }
-
-    // Update is called once per frame
 
     void rotateController() {
-        turn.x += Input.GetAxis("Mouse X");
-        transform.localRotation = Quaternion.Euler(0, rotationSpeed * turn.x, 0);
-        Quaternion rotation = Quaternion.Euler(0, transform.localEulerAngles.y, 0);
-        forwardDirection = rotation * Vector3.forward;
+        Vector3 camdir = camera.forward;
+        forwardDirection = camdir;
+        transform.rotation = Quaternion.Euler(0f, camera.eulerAngles.y, 0f);
         sideDirection = Vector3.Cross(forwardDirection, Vector3.up);
     }
     void Update()
@@ -61,25 +47,11 @@ public class Controller : MonoBehaviour
         rotateController();
         float _speed = parent.GetComponent<Level1>().getSpeed();
         bool flip = parent.GetComponent<Level1>().getFlip();
-        //float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
-        //float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
-        // yRotation += mouseX;
-        // xRotation += mouseY;
-        // xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-        // transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        // orientation.rotation = Quaternion.Euler(0, yRotation, 0);
         
         Vector3 forwardMove = Vector3.Scale(new Vector3(Input.GetAxis("Vertical"), 0, Input.GetAxis("Vertical")), forwardDirection);
         Vector3 sideMove = Vector3.Scale(new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Horizontal")), sideDirection);
 
-        // if (flip)
-        //     forwardMove *= -1;
         Vector3 move = forwardMove - sideMove;
-        
-        // if(Input.GetKeyDown("q")){
-        //     //flip = !flip;
-        //     pivot.transform.Rotate(0.0f, 0.0f,180.0f);
-        // }
         
         if (((_controller.collisionFlags & CollisionFlags.Above) != 0) & flip)
         {
@@ -112,8 +84,7 @@ public class Controller : MonoBehaviour
         move.y = ySpeed;
         Physics.SyncTransforms();
         _controller.Move(move * Time.deltaTime * _speed);
-        
-        
+
     }
     IEnumerator Teleport(int x, int y, int z) {
         transform.position = new Vector3(x, y, z);
