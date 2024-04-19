@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 2270211997637316070}
   - component: {fileID: 8214689775086319167}
   - component: {fileID: 6113153668764762142}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Unflipped FreeLook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5623068604362151861}
   - component: {fileID: 302130498049494200}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TopRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,7 +339,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2703859559535893466}
   - component: {fileID: 4962058992885895837}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TopRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 7225393117223344991}
   - component: {fileID: 2308852098404437567}
   - component: {fileID: 7405704102793616256}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -592,7 +592,7 @@ GameObject:
   - component: {fileID: 521698554607932254}
   - component: {fileID: 8928579477811074378}
   - component: {fileID: 6270362816327979807}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -720,7 +720,7 @@ GameObject:
   - component: {fileID: 6103409637363038231}
   - component: {fileID: 5904282418589486693}
   - component: {fileID: 2068216652928070423}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CC
   m_TagString: self
   m_Icon: {fileID: 0}
@@ -833,7 +833,7 @@ GameObject:
   - component: {fileID: 6893704752491830747}
   - component: {fileID: 2274527845287117475}
   - component: {fileID: 4567629515299579050}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -958,7 +958,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7844123250271099079}
   - component: {fileID: 4211778359871385304}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MiddleRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1039,7 +1039,7 @@ GameObject:
   - component: {fileID: 2135432001618300753}
   - component: {fileID: 6438759283966682077}
   - component: {fileID: 7070089034752935121}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1164,7 +1164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1806771571352561771}
   - component: {fileID: 2513615436371526958}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MiddleRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1243,7 +1243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2361286657082688088}
   - component: {fileID: 2811426829927048504}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BottomRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1323,7 +1323,7 @@ GameObject:
   - component: {fileID: 6685394649342791666}
   - component: {fileID: 5816129260106398970}
   - component: {fileID: 5916733917742437320}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flipped FreeLook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1496,7 +1496,7 @@ GameObject:
   - component: {fileID: 2417286259613649118}
   - component: {fileID: 87256608052392342}
   - component: {fileID: 5321532650860683933}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1623,7 +1623,7 @@ GameObject:
   - component: {fileID: 6471920967025807167}
   - component: {fileID: 2449790186296422644}
   - component: {fileID: 4210641267891930025}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1748,7 +1748,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8416148613555858066}
   - component: {fileID: 368451529316259800}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BottomRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1829,7 +1829,7 @@ GameObject:
   - component: {fileID: 3341039488194153183}
   - component: {fileID: 5626820964952743531}
   - component: {fileID: 4515598030037044739}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1956,7 +1956,7 @@ GameObject:
   - component: {fileID: 9158299251545995056}
   - component: {fileID: 4165796648180373042}
   - component: {fileID: 6118613737008227612}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2135,11 +2135,35 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -5565994385875918919, guid: 5c9de239ea0674983990b30a625d1593, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -5525113969242796387, guid: 5c9de239ea0674983990b30a625d1593, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -4986743700150642080, guid: 5c9de239ea0674983990b30a625d1593, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: -4314764439493069775, guid: 5c9de239ea0674983990b30a625d1593, type: 3}
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -4212503015311062528, guid: 5c9de239ea0674983990b30a625d1593, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: -2851195749870887970, guid: 5c9de239ea0674983990b30a625d1593, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -2413249191290770771, guid: 5c9de239ea0674983990b30a625d1593, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -101312194631335728, guid: 5c9de239ea0674983990b30a625d1593, type: 3}
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
@@ -2152,6 +2176,10 @@ PrefabInstance:
       value: MC
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5c9de239ea0674983990b30a625d1593, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2996111885837923181, guid: 5c9de239ea0674983990b30a625d1593, type: 3}
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
