@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class VanishWithLever : MonoBehaviour, ILeverInteractable
 {
+    public Material enabled;
+    public Material disabled;
+
+    private BoxCollider collider;
+
     // Start is called before the first frame update
     void Start()
     {
-        this.gameObject.SetActive(false);
+        collider = GetComponent<BoxCollider>();
+        collider.enabled = false;
+
+        Renderer rend = GetComponent<Renderer>();
+        rend.material = disabled;
     }
 
     // Update is called once per frame
@@ -18,6 +27,23 @@ public class VanishWithLever : MonoBehaviour, ILeverInteractable
 
     public void LeverToggle(bool newState)
     {
-        this.gameObject.SetActive(newState);
+        // newstate: describes whether the lever is now on (true) or off (false)
+
+        Renderer rend = GetComponent<Renderer>();
+        if (rend != null)
+        {
+            collider.enabled = newState;
+
+            if (newState)
+            {
+                rend.material = enabled;
+            } 
+            else
+            {
+                rend.material = disabled;
+            }
+        }
+
+        //this.gameObject.SetActive(newState);
     }
 }

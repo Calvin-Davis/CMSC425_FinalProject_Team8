@@ -5,20 +5,22 @@ using UnityEngine;
 public class Lever : MonoBehaviour
 {
     public GameObject receiverObject;
+    public Transform handle;
+    public float turnRadius;
 
     private bool on;
-    private GameObject offLever;
-    private GameObject onLever;
+    private Quaternion onPos;
+    private Quaternion offPos;
     private ILeverInteractable receiver;
 
     // Start is called before the first frame update
     void Start()
     {
         on = false;
-        offLever = this.gameObject.transform.GetChild(0).gameObject;
-        onLever = this.gameObject.transform.GetChild(1).gameObject;
-        offLever.SetActive(true);
-        onLever.SetActive(false);
+        onPos = Quaternion.Euler(0, 90, -90 - turnRadius);
+        offPos = Quaternion.Euler(0, 90, -90 + turnRadius);
+
+        handle.localRotation = offPos;
 
         receiver = receiverObject.GetComponent<ILeverInteractable>();
         if (receiver == null)
@@ -37,8 +39,13 @@ public class Lever : MonoBehaviour
     {
 
         on = !on;
-        offLever.SetActive(!on);
-        onLever.SetActive(on);
+        if (on)
+        {
+            handle.localRotation = onPos;
+        } else
+        {
+            handle.localRotation = offPos;
+        }
 
         Debug.Log("Lever received collision");
         receiver.LeverToggle(on);
