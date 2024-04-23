@@ -33,7 +33,7 @@ public class Level1 : MonoBehaviour
         if(Input.GetKeyDown("q") && flipCount == 0){
             flipCount += 1;
             flip = !flip;
-            CC.transform.localEulerAngles = new Vector3(180+ CC.transform.localEulerAngles.x, 180 + CC.transform.localEulerAngles.y, CC.transform.localEulerAngles.z);
+            CC.transform.GetChild(3).localEulerAngles = new Vector3(180+ CC.transform.GetChild(3).localEulerAngles.x, 180 + CC.transform.GetChild(3).localEulerAngles.y, CC.transform.GetChild(3).localEulerAngles.z);
             camController.swapCams();
         }
     }
