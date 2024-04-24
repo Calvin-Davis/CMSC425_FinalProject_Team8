@@ -6,6 +6,7 @@ public class VanishWithLever : MonoBehaviour, ILeverInteractable
 {
     public Material enabled;
     public Material disabled;
+    public bool startOn = false;
 
     private BoxCollider collider;
 
@@ -13,10 +14,10 @@ public class VanishWithLever : MonoBehaviour, ILeverInteractable
     void Start()
     {
         collider = GetComponent<BoxCollider>();
-        collider.enabled = false;
+        collider.enabled = startOn;
 
         Renderer rend = GetComponent<Renderer>();
-        rend.material = disabled;
+        rend.material = startOn ? enabled : disabled;
     }
 
     // Update is called once per frame

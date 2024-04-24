@@ -153,6 +153,10 @@ MonoBehaviour:
   receiverObject: {fileID: 0}
   handle: {fileID: 8028225379631917240}
   turnRadius: 70
+  startOn: 0
+  wireParent: {fileID: 0}
+  wireOffMaterial: {fileID: 2100000, guid: 661d2f5aa4a8fb74faec609a2c006558, type: 2}
+  wireOnMaterial: {fileID: 2100000, guid: 5d43bb438ea9bfb4093776be24eb527a, type: 2}
 --- !u!1 &6400937578943784817
 GameObject:
   m_ObjectHideFlags: 0
