@@ -7,6 +7,7 @@ public class ZoneBot : MonoBehaviour
 {
     public float botSpeed = 5;
     public Vector3 Center = Vector3.zero;
+    public bool useInitialPosition = false;
     public float radius = 1;
     private NavMeshAgent agent;
     public GameObject player;
@@ -15,6 +16,10 @@ public class ZoneBot : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         agent.speed= botSpeed;
+        if (useInitialPosition)
+        {
+            Center = GetComponent<Transform>().position;
+        }
         agent.destination = Center;
     }
 
