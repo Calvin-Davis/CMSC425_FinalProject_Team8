@@ -16,6 +16,7 @@ public class Level1 : MonoBehaviour
 
     // Add reference to our CamController script
     public CamController camController;
+    public AudioSource flipsound;
 
     public bool getFlip() {
         return flip;
@@ -31,6 +32,7 @@ public class Level1 : MonoBehaviour
             flipCount = 0;
         }
         if(Input.GetKeyDown("q") && flipCount == 0){
+            flipsound.PlayDelayed(0);
             flipCount += 1;
             flip = !flip;
             CC.transform.GetChild(3).localEulerAngles = new Vector3(180+ CC.transform.GetChild(3).localEulerAngles.x, 180 + CC.transform.GetChild(3).localEulerAngles.y, CC.transform.GetChild(3).localEulerAngles.z);

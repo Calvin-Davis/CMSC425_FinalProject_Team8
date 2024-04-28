@@ -13,6 +13,9 @@ public class Lever : MonoBehaviour
     public Material wireOffMaterial;
     public Material wireOnMaterial;
 
+    public AudioSource leverSound;
+
+
     private bool on;
     private Quaternion onPos;
     private Quaternion offPos;
@@ -60,7 +63,7 @@ public class Lever : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
+        leverSound.Play();
         on = !on;
         Material newMaterial = null;
         if (on)
