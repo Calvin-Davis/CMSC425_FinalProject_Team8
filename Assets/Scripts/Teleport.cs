@@ -13,6 +13,8 @@ public class Teleport : MonoBehaviour
 
     public Transform destination;
 
+    public AudioSource teleSound;
+
     void Start()
     {
         
@@ -25,6 +27,8 @@ public class Teleport : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        teleSound.PlayDelayed(0);
+        
         if (!useTransform)
         {
             other.transform.position = new Vector3(x, y, z);

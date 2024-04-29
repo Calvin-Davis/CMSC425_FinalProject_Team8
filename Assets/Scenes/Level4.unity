@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 279686223}
   - component: {fileID: 279686222}
   m_Layer: 0
-  m_Name: flip
+  m_Name: flipSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1443,11 +1443,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8816040783405754513, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.3893855
+      value: 0.38938555
       objectReference: {fileID: 0}
     - target: {fileID: 8816040783405754513, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.11020551
+      value: 0.11020553
       objectReference: {fileID: 0}
     - target: {fileID: 8816040783405754513, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_LocalRotation.y
@@ -2666,7 +2666,7 @@ GameObject:
   - component: {fileID: 1521048865}
   - component: {fileID: 1521048864}
   m_Layer: 0
-  m_Name: walking
+  m_Name: walkingSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
