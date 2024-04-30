@@ -15,6 +15,8 @@ public class Controller : MonoBehaviour
 
     public Transform camera;
 
+    public AudioSource audioSource;
+    private bool grounded = true;
     public float rotationSpeed = 2;
     Vector2 turn;
     Vector3 forwardDirection, sideDirection;
@@ -34,7 +36,33 @@ public class Controller : MonoBehaviour
             
         }
     }
+    void groundedCheck()
+    {
+        float distance;
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, Vector3.down, out hit))
+        {
+            distance = hit.distance;
+            if(Physics.Raycast(transform.position,Vector3.down,distance + 0.1f))
+            {
+                grounded = true;
+            } else {
+                grounded = false;
+            }
 
+        } 
+    } 
+
+    void MovementAudio() 
+    {
+        if(Input.GetAxis("Horizontal") != 0  || Input.GetAxis("Vertical") != 0){
+            if(grounded){
+                audioSource.enabled = true;
+            }
+        } else {
+            audioSource.enabled = false;
+        }
+    }
 
     void rotateController() {
         Vector3 camdir = camera.forward;
@@ -42,9 +70,11 @@ public class Controller : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, camera.eulerAngles.y, 0f);
         sideDirection = Vector3.Cross(forwardDirection, Vector3.up);
     }
+
     void Update()
     {
         rotateController();
+        groundedCheck();
         float _speed = parent.GetComponent<Level1>().getSpeed();
         bool flip = parent.GetComponent<Level1>().getFlip();
         
@@ -84,7 +114,7 @@ public class Controller : MonoBehaviour
         move.y = ySpeed;
         Physics.SyncTransforms();
         _controller.Move(move * Time.deltaTime * _speed);
-
+        MovementAudio();
     }
     IEnumerator Teleport(int x, int y, int z) {
         transform.position = new Vector3(x, y, z);
