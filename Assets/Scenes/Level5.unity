@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1177,11 +1177,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1806771571352561771, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.06549152
+      value: 0.06549151
       objectReference: {fileID: 0}
     - target: {fileID: 1806771571352561771, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0074379314
+      value: 0.0074379304
       objectReference: {fileID: 0}
     - target: {fileID: 2068216652928070423, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: parent
@@ -1373,11 +1373,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3408008721810332343, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.04312669
+      value: -0.043126695
       objectReference: {fileID: 0}
     - target: {fileID: 3408008721810332343, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0068069305
+      value: 0.006806931
       objectReference: {fileID: 0}
     - target: {fileID: 5623068604362151861, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3989,6 +3989,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lever
       objectReference: {fileID: 0}
+    - target: {fileID: 4073951297391079647, guid: 857e0cd13c0dec1468e39bbb765d58f0, type: 3}
+      propertyPath: CC
+      value: 
+      objectReference: {fileID: 155637823}
     - target: {fileID: 4073951297391079647, guid: 857e0cd13c0dec1468e39bbb765d58f0, type: 3}
       propertyPath: startOn
       value: 1
@@ -10558,6 +10562,10 @@ PrefabInstance:
       value: Lever
       objectReference: {fileID: 0}
     - target: {fileID: 4073951297391079647, guid: 857e0cd13c0dec1468e39bbb765d58f0, type: 3}
+      propertyPath: CC
+      value: 
+      objectReference: {fileID: 155637823}
+    - target: {fileID: 4073951297391079647, guid: 857e0cd13c0dec1468e39bbb765d58f0, type: 3}
       propertyPath: startOn
       value: 1
       objectReference: {fileID: 0}
@@ -11212,6 +11220,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lever
       objectReference: {fileID: 0}
+    - target: {fileID: 4073951297391079647, guid: 857e0cd13c0dec1468e39bbb765d58f0, type: 3}
+      propertyPath: CC
+      value: 
+      objectReference: {fileID: 155637823}
     - target: {fileID: 4073951297391079647, guid: 857e0cd13c0dec1468e39bbb765d58f0, type: 3}
       propertyPath: startOn
       value: 1
@@ -12695,6 +12707,10 @@ PrefabInstance:
       value: Lever
       objectReference: {fileID: 0}
     - target: {fileID: 4073951297391079647, guid: 857e0cd13c0dec1468e39bbb765d58f0, type: 3}
+      propertyPath: CC
+      value: 
+      objectReference: {fileID: 155637823}
+    - target: {fileID: 4073951297391079647, guid: 857e0cd13c0dec1468e39bbb765d58f0, type: 3}
       propertyPath: startOn
       value: 1
       objectReference: {fileID: 0}
@@ -13912,6 +13928,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lever
       objectReference: {fileID: 0}
+    - target: {fileID: 4073951297391079647, guid: 857e0cd13c0dec1468e39bbb765d58f0, type: 3}
+      propertyPath: CC
+      value: 
+      objectReference: {fileID: 155637823}
     - target: {fileID: 4073951297391079647, guid: 857e0cd13c0dec1468e39bbb765d58f0, type: 3}
       propertyPath: startOn
       value: 1

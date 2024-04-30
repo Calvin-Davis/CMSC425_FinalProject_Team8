@@ -17,6 +17,7 @@ public class Level1 : MonoBehaviour
     // Add reference to our CamController script
     public CamController camController;
     public AudioSource flipsound;
+    
 
     public bool getFlip() {
         return flip;
@@ -30,6 +31,7 @@ public class Level1 : MonoBehaviour
     {
         if(CC.isGrounded || ((CC.collisionFlags & CollisionFlags.Above) != 0)){
             flipCount = 0;
+
         }
         if(Input.GetKeyDown("q") && flipCount == 0){
             flipsound.PlayDelayed(0);
