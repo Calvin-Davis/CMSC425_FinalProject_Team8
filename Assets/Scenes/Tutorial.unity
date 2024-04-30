@@ -7631,6 +7631,10 @@ PrefabInstance:
       value: Lever
       objectReference: {fileID: 0}
     - target: {fileID: 4073951297391079647, guid: 857e0cd13c0dec1468e39bbb765d58f0, type: 3}
+      propertyPath: CC
+      value: 
+      objectReference: {fileID: 1708069598}
+    - target: {fileID: 4073951297391079647, guid: 857e0cd13c0dec1468e39bbb765d58f0, type: 3}
       propertyPath: leverSound
       value: 
       objectReference: {fileID: 456927910}

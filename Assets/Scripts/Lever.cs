@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+
 
 public class Lever : MonoBehaviour
 {
@@ -21,6 +23,9 @@ public class Lever : MonoBehaviour
     private Quaternion offPos;
     private ILeverInteractable receiver;
     private List<Renderer> wireRenderers;
+    bool active = true;
+
+    public CharacterController CC;
 
     // Start is called before the first frame update
     void Start()
@@ -58,29 +63,37 @@ public class Lever : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(CC.isGrounded || ((CC.collisionFlags & CollisionFlags.Above) != 0)){
+            active = true;
+            Debug.Log("Working");
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        leverSound.Play();
-        on = !on;
-        Material newMaterial = null;
-        if (on)
-        {
-            handle.localRotation = onPos;
-            newMaterial = wireOnMaterial;
-        } else
-        {
-            handle.localRotation = offPos;
-            newMaterial = wireOffMaterial;
-        }
+        
+        if(active) {
+            active = false;
+            leverSound.Play();
+            on = !on;
+            Material newMaterial = null;
+            if (on)
+            {
+                handle.localRotation = onPos;
+                newMaterial = wireOnMaterial;
+            } else
+            {
+                handle.localRotation = offPos;
+                newMaterial = wireOffMaterial;
+            }
 
-        foreach (Renderer rend in wireRenderers)
-        {
-            rend.material = newMaterial;
-        }
+            foreach (Renderer rend in wireRenderers)
+            {
+                rend.material = newMaterial;
+            }
 
-        receiver.LeverToggle(on);
+            receiver.LeverToggle(on);
+
+        }
     }
 }

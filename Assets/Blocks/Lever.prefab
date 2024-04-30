@@ -157,6 +157,8 @@ MonoBehaviour:
   wireParent: {fileID: 0}
   wireOffMaterial: {fileID: 2100000, guid: 661d2f5aa4a8fb74faec609a2c006558, type: 2}
   wireOnMaterial: {fileID: 2100000, guid: 5d43bb438ea9bfb4093776be24eb527a, type: 2}
+  leverSound: {fileID: 0}
+  CC: {fileID: 5904282418589486693, guid: 695321e883f7835439831fefecb248b0, type: 3}
 --- !u!1 &6400937578943784817
 GameObject:
   m_ObjectHideFlags: 0
