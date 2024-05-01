@@ -7,6 +7,7 @@ public class Door : MonoBehaviour
 {
     // Use this to indicate the name of the scene that holds the next level
     public string nameOfNextLevel;
+    public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,9 @@ public class Door : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if(audioSource != null){
+            audioSource.Play();
+        }
         if (other.gameObject.tag == "self")
         {
             Debug.Log("Level complete");
