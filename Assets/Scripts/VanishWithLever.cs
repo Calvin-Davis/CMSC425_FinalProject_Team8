@@ -9,12 +9,19 @@ public class VanishWithLever : MonoBehaviour, ILeverInteractable
     public bool startOn = false;
 
     private BoxCollider collider;
+    private UnityEngine.AI.NavMeshObstacle agent;
 
     // Start is called before the first frame update
     void Start()
     {
         collider = GetComponent<BoxCollider>();
         collider.enabled = startOn;
+
+        agent = GetComponent<UnityEngine.AI.NavMeshObstacle>();
+        if (agent != null)
+        {
+            agent.enabled = startOn;
+        }
 
         Renderer rend = GetComponent<Renderer>();
         rend.material = startOn ? enabled : disabled;
@@ -34,6 +41,10 @@ public class VanishWithLever : MonoBehaviour, ILeverInteractable
         if (rend != null)
         {
             collider.enabled = newState;
+            if (agent != null)
+            {
+                agent.enabled = newState;
+            }
 
             if (newState)
             {

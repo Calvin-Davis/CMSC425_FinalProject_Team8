@@ -23,7 +23,7 @@ public class Lever : MonoBehaviour
     private Quaternion offPos;
     private ILeverInteractable receiver;
     private List<Renderer> wireRenderers;
-    bool active = true;
+    bool schmactive = true;
 
     public CharacterController CC;
 
@@ -42,19 +42,22 @@ public class Lever : MonoBehaviour
             Debug.LogWarning("The receiver does not implement ILeverInteractable!", this);
         }
 
-        wireRenderers = new List<Renderer>();
-        foreach (Transform child in wireParent)
+        if (wireParent != null)
         {
-            Renderer rend = child.GetComponent<Renderer>();
-            if (rend != null)
+            wireRenderers = new List<Renderer>();
+            foreach (Transform child in wireParent)
             {
-                wireRenderers.Add(rend);
-                rend.material = startOn ? wireOnMaterial : wireOffMaterial;
-            }
-            Collider coll = child.GetComponent<Collider>();
-            if (coll != null)
-            {
-                coll.enabled = false;
+                Renderer rend = child.GetComponent<Renderer>();
+                if (rend != null)
+                {
+                    wireRenderers.Add(rend);
+                    rend.material = startOn ? wireOnMaterial : wireOffMaterial;
+                }
+                Collider coll = child.GetComponent<Collider>();
+                if (coll != null)
+                {
+                    coll.enabled = false;
+                }
             }
         }
 
@@ -63,17 +66,17 @@ public class Lever : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(CC.isGrounded || ((CC.collisionFlags & CollisionFlags.Above) != 0)){
-            active = true;
-            Debug.Log("Working");
+        if (!schmactive && (CC.isGrounded || ((CC.collisionFlags & CollisionFlags.Above) != 0)))
+        {
+            schmactive = true;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        
-        if(active) {
-            active = false;
+
+        if (schmactive) {
+            schmactive = false;
             leverSound.Play();
             on = !on;
             Material newMaterial = null;
@@ -87,9 +90,12 @@ public class Lever : MonoBehaviour
                 newMaterial = wireOffMaterial;
             }
 
-            foreach (Renderer rend in wireRenderers)
+            if (wireRenderers != null)
             {
-                rend.material = newMaterial;
+                foreach (Renderer rend in wireRenderers)
+                {
+                    rend.material = newMaterial;
+                }
             }
 
             receiver.LeverToggle(on);
