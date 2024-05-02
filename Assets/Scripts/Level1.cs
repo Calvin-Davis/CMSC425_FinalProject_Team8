@@ -36,6 +36,10 @@ public class Level1 : MonoBehaviour
         if(Input.GetKeyDown("q") && flipCount == 0){
             flipsound.PlayDelayed(0);
             flipCount += 1;
+            if(flip) {
+                CC.transform.Translate(0, -1f, 0);
+                Physics.SyncTransforms();
+            }
             flip = !flip;
             CC.transform.GetChild(3).localEulerAngles = new Vector3(180+ CC.transform.GetChild(3).localEulerAngles.x, 180 + CC.transform.GetChild(3).localEulerAngles.y, CC.transform.GetChild(3).localEulerAngles.z);
             camController.swapCams();
