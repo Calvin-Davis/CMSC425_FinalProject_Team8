@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelTransitionManager : MonoBehaviour
 {
+    public AudioSource audioSource;
     public void OnClickMainMenu()
     {
         Debug.Log("Respawning");
@@ -24,6 +25,7 @@ public class LevelTransitionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource.Play();
         UnityEngine.Cursor.lockState = CursorLockMode.None;
         UnityEngine.Cursor.visible = true;
     }

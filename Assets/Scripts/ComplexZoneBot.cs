@@ -29,6 +29,15 @@ public class ComplexZoneBot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //This bot acts like combination of other bots (is purple in game).
+        //Like patrol bot it goes to given nodes one by one, but if a player gets close
+        //enough to one of the nodes it the bot will target the player instead until the
+        //player leaves range upon which the bot will continue where it left off
+        //If resting is set to true the bot will behave more like a zone bot sitting
+        //at the designated node until a player gets within specified range of one of
+        //the nodes (note this allows for creation of a zone bot with a non-circular zone)
+
+        //check if player in range of nodes
         bool inRange = false;
         foreach (Transform t in goals) {
             float distance = (player.transform.position - t.position).magnitude;
@@ -39,7 +48,8 @@ public class ComplexZoneBot : MonoBehaviour
             }
         }
 
-
+        //follow set node path or if player in range then tarher player
+        //(patrol bot code + player targeting)
         if(!resting) {
             if(!inRange) {
                 agent.destination = goals[idx].position;
@@ -65,6 +75,7 @@ public class ComplexZoneBot : MonoBehaviour
                 agent.destination = player.transform.position;
             }
         } else {
+            //go to default position until player in range (zone bot code)
              if(inRange) {
                 agent.destination = player.transform.position;
              } else {

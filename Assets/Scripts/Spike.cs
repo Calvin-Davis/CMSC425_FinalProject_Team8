@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Spike : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // Note: despite the name this is not just used for spike but for any player death
+    //(spike or robot collsion)
     void Start()
     {
         
@@ -17,9 +18,10 @@ public class Spike : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        //if player collides with something with spike script load the respawn screen while
+        //passing name of the scene died on so that the player can respawn if they choose
         if (other.gameObject.tag == "self")
         {
-            Debug.Log("Respawn");
             PlayerStats.ScenePlayerDiedOn = this.gameObject.scene.name;
             SceneManager.LoadScene("Respawn");
         }

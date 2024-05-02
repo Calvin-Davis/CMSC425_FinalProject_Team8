@@ -24,3 +24,13 @@
 - Attribution for spaceship model (idk how this works)
 - Bake lighting at high quality
 - Playtesting and bug fixing
+
+
+Commented files
+- PatrolBot.cs
+- ZoneBot.cs
+- Spike.cs
+- PlayerStats.cs
+- ObjectRepeater.cs
+- Teleport.cs
+- ComplexZoneBot.cs
