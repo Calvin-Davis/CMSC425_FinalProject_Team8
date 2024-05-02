@@ -22,7 +22,6 @@ public class Spike : MonoBehaviour
         //passing name of the scene died on so that the player can respawn if they choose
         if (other.gameObject.tag == "self")
         {
-            //Debug.Log("Respawn");
             PlayerStats.ScenePlayerDiedOn = this.gameObject.scene.name;
             SceneManager.LoadScene("Respawn");
         }
