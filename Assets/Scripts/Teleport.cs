@@ -27,6 +27,8 @@ public class Teleport : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        //if anything collides with the teleporter it will be tped to set destination
+        //set destination can be given as a 3d coordinate or an object to tp to
         teleSound.PlayDelayed(0);
         
         if (!useTransform)

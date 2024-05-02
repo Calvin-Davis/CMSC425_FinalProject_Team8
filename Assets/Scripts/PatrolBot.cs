@@ -25,7 +25,8 @@ public class PatrolBot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Walks to set node, once arives target changes to next node
+        //cyclic decides whether to go back to first node at end or turn around at last node
         if(Mathf.Abs(transform.position.x - goals[idx].position.x) <= 0.1 && Mathf.Abs(transform.position.z - goals[idx].position.z) <= 0.1) {
             idx += 1*inverse;
             
