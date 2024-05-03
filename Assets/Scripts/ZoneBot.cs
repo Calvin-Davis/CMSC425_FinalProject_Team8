@@ -13,6 +13,7 @@ public class ZoneBot : MonoBehaviour
     private NavMeshAgent agent;
     public GameObject player;
     public Material neutralEyeColor, pursuitEyeColor;
+    public AudioSource alertSound;
     private Renderer eyeRenderer;
     private bool pursuiting, prevPursuiting = false;
     private float animationTime = 0, restingYPos = 0;
@@ -46,6 +47,7 @@ public class ZoneBot : MonoBehaviour
         if (pursuiting && !prevPursuiting) {
             setEyeColor(pursuitEyeColor);
             restingYPos = transform.position.y;
+            alertSound.PlayDelayed(0);
         }
 
         else if (!pursuiting && prevPursuiting) {
