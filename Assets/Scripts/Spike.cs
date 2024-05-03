@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Spike : MonoBehaviour
 {
+
+   
     // Note: despite the name this is not just used for spike but for any player death
     //(spike or robot collsion)
     void Start()
