@@ -5,12 +5,13 @@ using UnityEngine.SceneManagement;
 public class Spike : MonoBehaviour
 {
 
-   
+    private CanvasGroup canvasGroup;
+    private float fadeTime = 0.25F;
     // Note: despite the name this is not just used for spike but for any player death
     //(spike or robot collsion)
     void Start()
     {
-        
+        canvasGroup = FindObjectOfType<CanvasGroup>();
     }
 
     // Update is called once per frame
@@ -25,7 +26,16 @@ public class Spike : MonoBehaviour
         if (other.gameObject.tag == "self")
         {
             PlayerStats.ScenePlayerDiedOn = this.gameObject.scene.name;
-            SceneManager.LoadScene("Respawn");
+            StartCoroutine(FadeOutCoroutine());
         }
+    }
+
+    private IEnumerator FadeOutCoroutine()
+    {
+        while (canvasGroup.alpha <= 0.99) {
+            canvasGroup.alpha += Time.deltaTime / fadeTime;
+            yield return null;
+        }
+        SceneManager.LoadScene("Respawn");
     }
 }
