@@ -10,7 +10,7 @@ public class ComplexZoneBot : MonoBehaviour
     public Transform[] goals;
     private int idx, inverse = 1;
     private float animationTime = 0;
-    private bool pursuiting = false, prevPursuiting = false;
+    private bool prevInRange;
     private Renderer eyeRenderer;
     private NavMeshAgent agent;
     public bool isCyclic = true;
@@ -50,19 +50,17 @@ public class ComplexZoneBot : MonoBehaviour
             float distance = (player.transform.position - t.position).magnitude;
             if(distance < radius) {
                 inRange = true;
-                pursuiting = true;
             } else {
                 inRange = false;
-                pursuiting = false;
             }
         }
 
-        if (pursuiting && !prevPursuiting) {
+        if (inRange && !prevInRange) {
             setEyeColor(pursuitEyeColor);
             alertSound.PlayDelayed(0);
         }
 
-        else if (!pursuiting && prevPursuiting) {
+        else if (!inRange && prevInRange) {
             setEyeColor(neutralEyeColor);
         }
 
@@ -103,7 +101,7 @@ public class ComplexZoneBot : MonoBehaviour
 
         animateFloating();
 
-        prevPursuiting = pursuiting;
+        prevInRange = inRange;
     }
 
     void setEyeColor(Material color) {
