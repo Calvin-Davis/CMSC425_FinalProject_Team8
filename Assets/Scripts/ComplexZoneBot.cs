@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.XR;
@@ -7,14 +8,13 @@ using UnityEngine.AI;
 public class ComplexZoneBot : MonoBehaviour
 {
     public Transform[] goals;
-    private int idx;
+    private int idx, inverse = 1;
+    private float animationTime = 0;
     private NavMeshAgent agent;
     public bool isCyclic = true;
-    private int inverse = 1;
-    public float botSpeed = 5;
     public bool resting = true;
     public GameObject player;
-    public float radius = 1;
+    public float botSpeed = 5, radius = 1, floatHeight = 0.4F, floatAnimationSpeed = 5F;
     public Transform defaultGoal;
     
     // Start is called before the first frame update
@@ -82,5 +82,18 @@ public class ComplexZoneBot : MonoBehaviour
                 agent.destination = defaultGoal.position;
              }
         }
+
+        animateFloating();
+    }
+
+    void animateFloating()
+    {
+        float yPos = floatHeight * (Mathf.Cos(floatAnimationSpeed * animationTime + MathF.PI) + 1);
+        transform.position = new Vector3(transform.position.x, transform.position.y + yPos, transform.position.z);
+
+        if (animationTime >= 2 * MathF.PI / floatAnimationSpeed)
+            animationTime = 0;
+
+        animationTime += Time.deltaTime;
     }
 }

@@ -89,7 +89,7 @@ public class ZoneBot : MonoBehaviour
         direction.y = Mathf.Sign(restingYPos - transform.position.y);
         Vector3 position;
 
-        while (Math.Abs(restingYPos - transform.position.y) >= 0.005)
+        while (Math.Abs(restingYPos - transform.position.y) >= 0.01)
         {
             // Interpolate movement smoothly over time
             transform.position += direction * Time.deltaTime * floatAnimationSpeed;
