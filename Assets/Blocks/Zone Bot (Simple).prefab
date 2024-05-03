@@ -71,9 +71,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   botSpeed: 3
+  floatHeight: 0.4
+  floatAnimationSpeed: 3
   Center: {x: 0, y: 0, z: 0}
+  useInitialPosition: 0
   radius: 15
   player: {fileID: 0}
+  neutralEyeColor: {fileID: 5033703511601670329, guid: d8433ba802132441d81eb8075f079495, type: 3}
+  pursuitEyeColor: {fileID: 5033703511601670329, guid: f89d67e89cf12471b8b6332d88d46fc6, type: 3}
 --- !u!136 &7144646231072343207
 CapsuleCollider:
   m_ObjectHideFlags: 0
