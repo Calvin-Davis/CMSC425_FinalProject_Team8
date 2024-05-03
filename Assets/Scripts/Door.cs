@@ -20,11 +20,12 @@ public class Door : MonoBehaviour
         
     }
 
+    //when player touches door send them to the the level complete screen and prepare
+    //to load next level
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "self")
         {
-            Debug.Log("Level complete");
             PlayerStats.PlayerNextLevel = nameOfNextLevel;
             SceneManager.LoadScene("LevelTransitionMenu");
         }

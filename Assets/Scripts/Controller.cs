@@ -26,43 +26,38 @@ public class Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //used to keep cursor in game and invisibile so it does not block view of game
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         UnityEngine.Cursor.visible = false;
         _controller = GetComponent<CharacterController>();
     }
-    public void OnTriggerEnter(Collider other){
-        if(other.name == "Teleport") {
-            Debug.Log("Teleporting");
-            
-        }
-    }
-    void groundedCheck()
-    {
-        float distance;
-        RaycastHit hit;
-        if(Physics.Raycast(transform.position, Vector3.down, out hit))
-        {
-            distance = hit.distance;
-            if(Physics.Raycast(transform.position,Vector3.down,distance + 0.1f))
-            {
-                grounded = true;
-            } else {
-                grounded = false;
-            }
+    // void groundedCheck()
+    // {
+    //     float distance;
+    //     RaycastHit hit;
+    //     if(Physics.Raycast(transform.position, Vector3.down, out hit))
+    //     {
+    //         distance = hit.distance;
+    //         if(Physics.Raycast(transform.position,Vector3.down,distance + 0.1f))
+    //         {
+    //             grounded = true;
+    //         } else {
+    //             grounded = false;
+    //         }
 
-        } 
-    } 
+    //     } 
+    // } 
 
-    void MovementAudio() 
-    {
-        if(Input.GetAxis("Horizontal") != 0  || Input.GetAxis("Vertical") != 0){
-            if(grounded){
-                audioSource.enabled = true;
-            }
-        } else {
-            audioSource.enabled = false;
-        }
-    }
+    // void MovementAudio() 
+    // {
+    //     if(Input.GetAxis("Horizontal") != 0  || Input.GetAxis("Vertical") != 0){
+    //         if(grounded){
+    //             audioSource.enabled = true;
+    //         }
+    //     } else {
+    //         audioSource.enabled = false;
+    //     }
+    // }
 
     void rotateController() {
         Vector3 camdir = camera.forward;
@@ -74,7 +69,8 @@ public class Controller : MonoBehaviour
     void Update()
     {
         rotateController();
-        groundedCheck();
+        // groundedCheck();
+        
         float _speed = parent.GetComponent<Level1>().getSpeed();
         bool flip = parent.GetComponent<Level1>().getFlip();
         
@@ -82,15 +78,31 @@ public class Controller : MonoBehaviour
         Vector3 sideMove = Vector3.Scale(new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Horizontal")), sideDirection);
 
         Vector3 move = forwardMove - sideMove;
-        
+        //look at gravity.cs for more in depth explanation. this is similar code
+        //that also adds jump functionality and walking sounds for the player 
+        //when the player is determined to be grounded
         if (((_controller.collisionFlags & CollisionFlags.Above) != 0) & flip)
         {
+            //sound start
+            if(Input.GetAxis("Horizontal") != 0  || Input.GetAxis("Vertical") != 0){
+                audioSource.enabled = true;
+            } else {
+                audioSource.enabled = false;
+            }
+            //sound end
             if(Input.GetKeyDown("space")) {
                 ySpeed -= jumpSpeed;
             } else if(ySpeed > 0) {
                 ySpeed = 0.5f;
             }
         } else if(_controller.isGrounded & !flip) {
+            //sound start
+            if(Input.GetAxis("Horizontal") != 0  || Input.GetAxis("Vertical") != 0){
+                audioSource.enabled = true;
+            } else {
+                audioSource.enabled = false;
+            }
+            //sound end
             if(Input.GetKeyDown("space")) {
                 ySpeed += jumpSpeed;
             } else if(ySpeed < 0) {
@@ -99,27 +111,31 @@ public class Controller : MonoBehaviour
         } else if (((_controller.collisionFlags & CollisionFlags.Above) != 0) & !flip & ySpeed > 0) {
             //Used for edge case where someone flips gravity with high 
             //momentum right before hitting a roof/floor
-            //Note at this point in this code when something 
-            //collides where corners just barely touch leading to
-            // May fix itself by changing character model
+            //sound start
+            audioSource.enabled = false;
+            //sound end
             ySpeed = -0.1f;
         } else if(_controller.isGrounded & flip & ySpeed < 0) {
+            //sound start
+            audioSource.enabled = false;
+            //sound end
             ySpeed = 0.1f;
         }
         else if (!flip) {
+            //sound start
+            audioSource.enabled = false;
+            //sound end
             ySpeed += Physics.gravity.y * Time.deltaTime;
         } else {
+            //sound start
+            audioSource.enabled = false;
+            //sound end
             ySpeed -= Physics.gravity.y * Time.deltaTime;
         } 
         move.y = ySpeed;
         Physics.SyncTransforms();
         _controller.Move(move * Time.deltaTime * _speed);
-        MovementAudio();
+        //MovementAudio();
     }
-    IEnumerator Teleport(int x, int y, int z) {
-        transform.position = new Vector3(x, y, z);
-        
-        yield return null;
-    
-    }
+   
 }
