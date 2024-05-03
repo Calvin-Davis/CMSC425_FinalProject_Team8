@@ -9,9 +9,11 @@ public class PatrolBot : MonoBehaviour
     public Transform[] goals;
     private int idx;
     private NavMeshAgent agent;
+    private Renderer eyeRenderer;
     public bool isCyclic = true;
     private int inverse = 1;
     public float botSpeed = 5;
+    public Material eyeColor;
     
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,10 @@ public class PatrolBot : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.speed = botSpeed;
         agent.destination = goals[idx].position;
+
+        // select eye color
+        eyeRenderer = transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).GetComponent<Renderer>();
+        eyeRenderer.material = eyeColor;
     }
 
     // Update is called once per frame
