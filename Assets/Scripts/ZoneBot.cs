@@ -28,6 +28,7 @@ public class ZoneBot : MonoBehaviour
             Center = GetComponent<Transform>().position;
         }
         agent.destination = Center;
+        
         eyeRenderer = transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).GetComponent<Renderer>();
         setEyeColor(neutralEyeColor);
     }

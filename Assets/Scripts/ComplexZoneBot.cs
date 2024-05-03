@@ -10,12 +10,16 @@ public class ComplexZoneBot : MonoBehaviour
     public Transform[] goals;
     private int idx, inverse = 1;
     private float animationTime = 0;
+    private bool pursuiting = false, prevPursuiting = false;
+    private Renderer eyeRenderer;
     private NavMeshAgent agent;
     public bool isCyclic = true;
     public bool resting = true;
     public GameObject player;
     public float botSpeed = 5, radius = 1, floatHeight = 0.4F, floatAnimationSpeed = 5F;
     public Transform defaultGoal;
+    public Material neutralEyeColor, pursuitEyeColor;
+    public AudioSource alertSound;
     
     // Start is called before the first frame update
     void Start()
@@ -24,6 +28,9 @@ public class ComplexZoneBot : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.speed = botSpeed;
         agent.destination = goals[idx].position;
+
+        eyeRenderer = transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).GetComponent<Renderer>();
+        setEyeColor(neutralEyeColor);
     }
 
     // Update is called once per frame
@@ -43,9 +50,20 @@ public class ComplexZoneBot : MonoBehaviour
             float distance = (player.transform.position - t.position).magnitude;
             if(distance < radius) {
                 inRange = true;
+                pursuiting = true;
             } else {
                 inRange = false;
+                pursuiting = false;
             }
+        }
+
+        if (pursuiting && !prevPursuiting) {
+            setEyeColor(pursuitEyeColor);
+            alertSound.PlayDelayed(0);
+        }
+
+        else if (!pursuiting && prevPursuiting) {
+            setEyeColor(neutralEyeColor);
         }
 
         //follow set node path or if player in range then tarher player
@@ -84,6 +102,12 @@ public class ComplexZoneBot : MonoBehaviour
         }
 
         animateFloating();
+
+        prevPursuiting = pursuiting;
+    }
+
+    void setEyeColor(Material color) {
+        eyeRenderer.material = color;
     }
 
     void animateFloating()
