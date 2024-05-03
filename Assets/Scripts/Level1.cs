@@ -11,6 +11,7 @@ public class Level1 : MonoBehaviour
 
     public bool flip = false;
     public CharacterController CC;
+    public float flipRotationTime = 0.5F;
     [SerializeField] public float _speed = 5;
     int flipCount = 0;
 
@@ -36,13 +37,27 @@ public class Level1 : MonoBehaviour
         if(Input.GetKeyDown("q") && flipCount == 0){
             flipsound.PlayDelayed(0);
             flipCount += 1;
-            if(flip) {
-                CC.transform.Translate(0, -1f, 0);
-                Physics.SyncTransforms();
-            }
             flip = !flip;
-            CC.transform.GetChild(3).localEulerAngles = new Vector3(180+ CC.transform.GetChild(3).localEulerAngles.x, 180 + CC.transform.GetChild(3).localEulerAngles.y, CC.transform.GetChild(3).localEulerAngles.z);
+            StartCoroutine(SmoothRotateCoroutine());
             camController.swapCams();
+        }
+    }
+
+    private IEnumerator SmoothRotateCoroutine()
+    {
+        float elapsedTime = 0.0f;
+
+        Vector3 startRotation = CC.transform.GetChild(3).localEulerAngles;
+        Vector3 targetRotation = startRotation + new Vector3(180, 180, 0);
+
+        while (elapsedTime < flipRotationTime)
+        {
+            // Interpolate rotation smoothly over time
+            CC.transform.GetChild(3).localEulerAngles = Vector3.Lerp(startRotation, targetRotation, elapsedTime / flipRotationTime);
+
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
         }
     }
 }
