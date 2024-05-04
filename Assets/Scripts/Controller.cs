@@ -5,7 +5,7 @@ public class Controller : MonoBehaviour
 {
     private CharacterController _controller;
     private float ySpeed, rotationTime = 0;
-    private bool walking;
+    private bool walking, canMove = true;
     private Transform leftLeg, rightLeg;
     public GameObject parent;
 
@@ -28,6 +28,10 @@ public class Controller : MonoBehaviour
         _controller = GetComponent<CharacterController>();
         leftLeg = transform.GetChild(3).transform.GetChild(0).transform.GetChild(4);
         rightLeg = transform.GetChild(3).transform.GetChild(0).transform.GetChild(5);
+    }
+
+    public void setCanMove(bool option) {
+        canMove = option;
     }
 
     //used to keep player model looking in same direction as camera
@@ -79,6 +83,9 @@ public class Controller : MonoBehaviour
         } 
         move.y = ySpeed;
         Physics.SyncTransforms();
+
+        if (!canMove)
+            move = Vector3.zero;
         _controller.Move(move * Time.deltaTime * _speed);
 
         if ((move.x != 0 || move.z != 0) && (_controller.isGrounded || (_controller.collisionFlags & CollisionFlags.Above) != 0))
