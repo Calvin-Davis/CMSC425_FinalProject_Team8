@@ -27,10 +27,8 @@
 
 
 Commented files
-- PatrolBot.cs
-- ZoneBot.cs
-- Spike.cs
-- PlayerStats.cs
-- ObjectRepeater.cs
-- Teleport.cs
-- ComplexZoneBot.cs
+everything except
+- ./Cutscene Scripts
+- VanishWithLever.cs
+- CamController.cs
+- Lever.cs is commented but might need another look over by calvin
