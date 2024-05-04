@@ -5,13 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class RespawnManager : MonoBehaviour
 {
-    public string level = "MainMenu";
-    public void UpdateRespawnLevel(string levelname) {
-        level = levelname;
-    }
+    
     public void OnClickMainMenu() {
         SceneManager.LoadScene("MainMenu");
     }
+    //Note uses player stats to determine what level player just died on
     public void OnClickRespawn() {
         Debug.Log("Respawning");
         SceneManager.LoadScene(PlayerStats.ScenePlayerDiedOn);

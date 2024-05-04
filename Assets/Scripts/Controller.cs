@@ -30,6 +30,7 @@ public class Controller : MonoBehaviour
         rightLeg = transform.GetChild(3).transform.GetChild(0).transform.GetChild(5);
     }
 
+    //used to keep player model looking in same direction as camera
     void rotateController() {
         Vector3 camdir = camera.forward;
         forwardDirection = camdir;
@@ -48,10 +49,9 @@ public class Controller : MonoBehaviour
         Vector3 sideMove = Vector3.Scale(new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Horizontal")), sideDirection);
 
         Vector3 move = forwardMove - sideMove;
+        
         //look at gravity.cs for more in depth explanation. this is similar code
-        //that also adds jump functionality and walking sounds for the player 
-        //when the player is determined to be grounded
-
+        //that also adds jump functionality when the player is determined to be grounded
         if (((_controller.collisionFlags & CollisionFlags.Above) != 0) & flip)
         {
             if(Input.GetKeyDown("space")) {
@@ -68,9 +68,6 @@ public class Controller : MonoBehaviour
         } else if (((_controller.collisionFlags & CollisionFlags.Above) != 0) & !flip & ySpeed > 0) {
             //Used for edge case where someone flips gravity with high 
             //momentum right before hitting a roof/floor
-            //Note at this point in this code when something 
-            //collides where corners just barely touch leading to
-            // May fix itself by changing character model
             ySpeed = -0.1f;
         } else if(_controller.isGrounded & flip & ySpeed < 0) {
             ySpeed = 0.1f;
@@ -90,12 +87,6 @@ public class Controller : MonoBehaviour
             walking = false;
 
         animateWalking();        
-    }
-    IEnumerator Teleport(int x, int y, int z) {
-        transform.position = new Vector3(x, y, z);
-        
-        yield return null;
-    
     }
 
     private void animateWalking() {

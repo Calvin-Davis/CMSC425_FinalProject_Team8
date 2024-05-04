@@ -23,6 +23,7 @@ public class ZoneBot : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         agent.speed= botSpeed;
+        //Sets point for bot to rest at either at current position or at given vector3
         if (useInitialPosition)
         {
             Center = GetComponent<Transform>().position;
@@ -36,6 +37,7 @@ public class ZoneBot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //detects if player in range
         float distance = (player.transform.position - Center).magnitude;
         if (distance < radius) {
             pursuiting = true;
@@ -44,7 +46,7 @@ public class ZoneBot : MonoBehaviour
             pursuiting = false;
             agent.destination = Center;
         }
-
+        //setting eyecolor based on if chasing player or not
         if (pursuiting && !prevPursuiting) {
             setEyeColor(pursuitEyeColor);
             restingYPos = transform.position.y;
@@ -66,6 +68,9 @@ public class ZoneBot : MonoBehaviour
         eyeRenderer.material = color;
     }
 
+    //used to make robot animation more dynamic, allowing them to float up and down
+    //instead of just hovering in at same y. Also allows robot to lower to ground
+    //and rest when not chasing
     void animateFloating() {
         if (agent.velocity != Vector3.zero || (agent.velocity == Vector3.zero && prevVelocity != Vector3.zero)) {
 
@@ -84,6 +89,7 @@ public class ZoneBot : MonoBehaviour
         }
     }
 
+    //returns bot to center   
     private IEnumerator ReturnToRestCoroutine()
     {
         Vector3 direction = Vector3.zero;
@@ -103,17 +109,20 @@ public class ZoneBot : MonoBehaviour
         animationTime = 0;
     }
 
+    //used to rotate bot when bot to face player after returning to resting spot
+    //otherwise robot almost always faces away from player (it faces the direction
+    //opposite of the chase upon return)
     private IEnumerator SmoothRotateCoroutine() {
         float elapsedTime = 0.0f;
         float rotationTime = 1f;
-
+        //find angle of robot to player using their locations
         Vector3 playerPosition = player.transform.position;
         Vector3 currentPosition = transform.position;
 
         Vector3 directionToPlayer = playerPosition - currentPosition;
 
         float yAngle = Mathf.Atan2(directionToPlayer.x, directionToPlayer.z) * Mathf.Rad2Deg;
-
+        //smoothly roatate bot based on calculated angle
         Quaternion targetRotation = Quaternion.Euler(0f, yAngle, 0f);
 
         Quaternion startRotation = transform.rotation;

@@ -30,10 +30,16 @@ public class Level1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //reset flip count if player hits ground. flipCount used to keep player
+        //from flipping more than once in the air as infinite flips in air would
+        //allow player to fly. Making flipCount an int instead of bool allows
+        //possible later implementation of levels where you can flip a couple of
+        //times in the air before needing to reset the flip count.
         if(CC.isGrounded || ((CC.collisionFlags & CollisionFlags.Above) != 0)){
             flipCount = 0;
-
         }
+
+        //flip if allowed when player presses q
         if(Input.GetKeyDown("q") && flipCount == 0){
             flipsound.PlayDelayed(0);
             flipCount += 1;
@@ -43,6 +49,7 @@ public class Level1 : MonoBehaviour
         }
     }
 
+    //used to flip player model over when gravity is flipped
     private IEnumerator SmoothRotateCoroutine()
     {
         float elapsedTime = 0.0f;

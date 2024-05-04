@@ -21,6 +21,7 @@ public class TutorialMessages : MonoBehaviour
         
     }
 
+    //Displays tutorial text as player moves through tutorial
     public void progress()
     {
         tmp.SetText(strings[++idx]);

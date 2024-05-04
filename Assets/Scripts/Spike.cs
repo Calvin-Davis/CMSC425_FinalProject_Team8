@@ -30,6 +30,8 @@ public class Spike : MonoBehaviour
         }
     }
 
+    //Used to fade out screen on death rather than having screen freeze then
+    //abruptly snap to respawn screen
     private IEnumerator FadeOutCoroutine()
     {
         while (canvasGroup.alpha <= 0.99) {

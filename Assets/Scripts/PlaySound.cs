@@ -16,7 +16,7 @@ public class PlaySound : MonoBehaviour
     {
         
     }
-
+    //plays sound
     public void playEffect()
     {
         audioSource.Play();
