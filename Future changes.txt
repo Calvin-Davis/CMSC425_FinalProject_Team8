@@ -29,6 +29,7 @@
 Commented files
 everything except
 - ./Cutscene Scripts
+- ./Interfaces
 - VanishWithLever.cs
 - CamController.cs
 - Lever.cs is commented but might need another look over by calvin
