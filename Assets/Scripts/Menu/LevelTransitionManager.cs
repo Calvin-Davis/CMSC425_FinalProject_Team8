@@ -25,7 +25,10 @@ public class LevelTransitionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioSource.Play();
+        if (PlayerStats.PlayerNextLevel != "OutroCutscene")
+        {
+            audioSource.Play();
+        }
         UnityEngine.Cursor.lockState = CursorLockMode.None;
         UnityEngine.Cursor.visible = true;
     }
