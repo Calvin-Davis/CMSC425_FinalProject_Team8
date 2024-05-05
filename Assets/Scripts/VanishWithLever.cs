@@ -14,6 +14,7 @@ public class VanishWithLever : MonoBehaviour, ILeverInteractable
     // Start is called before the first frame update
     void Start()
     {
+        //enables renders, updates navmesh and puts collider on if default state is on
         collider = GetComponent<BoxCollider>();
         collider.enabled = startOn;
 
@@ -36,6 +37,7 @@ public class VanishWithLever : MonoBehaviour, ILeverInteractable
     public void LeverToggle(bool newState)
     {
         // newstate: describes whether the lever is now on (true) or off (false)
+        //enables or disables based on lever state
 
         Renderer rend = GetComponent<Renderer>();
         if (rend != null)
