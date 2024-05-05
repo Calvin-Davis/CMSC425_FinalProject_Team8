@@ -66,5 +66,8 @@ public class Level1 : MonoBehaviour
 
             yield return null;
         }
+
+        // make sure model gets to correct orientation
+        CC.transform.GetChild(3).localEulerAngles = startRotation + new Vector3(180, 180, 0);
     }
 }
