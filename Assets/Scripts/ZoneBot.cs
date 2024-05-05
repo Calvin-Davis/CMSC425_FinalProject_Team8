@@ -50,7 +50,10 @@ public class ZoneBot : MonoBehaviour
         if (pursuiting && !prevPursuiting) {
             setEyeColor(pursuitEyeColor);
             restingYPos = transform.position.y;
-            alertSound.PlayDelayed(0);
+            if (alertSound != null)
+            {
+                alertSound.PlayDelayed(0);
+            }
         }
 
         else if (!pursuiting && prevPursuiting) {

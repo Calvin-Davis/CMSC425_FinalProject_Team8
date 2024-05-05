@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1449,6 +1449,10 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 1075333536}
+    - target: {fileID: 2068216652928070423, guid: 695321e883f7835439831fefecb248b0, type: 3}
+      propertyPath: rotationSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2270211997637316070, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.77808946
@@ -1607,7 +1611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2703859559535893466, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0042940974
+      value: 0.0042941123
       objectReference: {fileID: 0}
     - target: {fileID: 2703859559535893466, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1723,19 +1727,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7844123250271099079, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.97674495
+      value: 0.9767449
       objectReference: {fileID: 0}
     - target: {fileID: 7844123250271099079, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.17031513
+      value: 0.1703151
       objectReference: {fileID: 0}
     - target: {fileID: 7844123250271099079, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.11517504
+      value: -0.11517501
       objectReference: {fileID: 0}
     - target: {fileID: 7844123250271099079, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.060801685
+      value: 0.06080167
       objectReference: {fileID: 0}
     - target: {fileID: 8416148613555858066, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5709,7 +5713,7 @@ MonoBehaviour:
   nameOfNextLevel: 
   flip: 0
   CC: {fileID: 155637823}
-  flipRotationTime: 0.5
+  flipRotationTime: 0.2
   _speed: 5
   camController: {fileID: 588852921}
   flipsound: {fileID: 2088734358}
@@ -9135,6 +9139,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7306009734104790834, guid: be27c1acd62b3944596f6daf2b3fdaca, type: 3}
+      propertyPath: gravity
+      value: 
+      objectReference: {fileID: 1946157324}
+    - target: {fileID: 7306009734104790834, guid: be27c1acd62b3944596f6daf2b3fdaca, type: 3}
       propertyPath: destination
       value: 
       objectReference: {fileID: 503223605}
@@ -12455,6 +12463,10 @@ PrefabInstance:
     - target: {fileID: 5104447492412662783, guid: 91b944e88ae6676429d5fd5c430103eb, type: 3}
       propertyPath: radius
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5104447492412662783, guid: 91b944e88ae6676429d5fd5c430103eb, type: 3}
+      propertyPath: alertSound
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5104447492412662783, guid: 91b944e88ae6676429d5fd5c430103eb, type: 3}
       propertyPath: useInitialPosition
@@ -17627,6 +17639,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 548780363316631621, guid: 902f038982cacfb4cac842bd484e2806, type: 3}
   m_PrefabInstance: {fileID: 1946157321}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1946157324 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2298282529075302928, guid: 902f038982cacfb4cac842bd484e2806, type: 3}
+  m_PrefabInstance: {fileID: 1946157321}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 632ac8ef95c2f9b42a300755ad45752d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1946791861
 GameObject:
   m_ObjectHideFlags: 0
