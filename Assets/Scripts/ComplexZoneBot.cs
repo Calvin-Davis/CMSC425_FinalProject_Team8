@@ -108,6 +108,7 @@ public class ComplexZoneBot : MonoBehaviour
         eyeRenderer.material = color;
     }
 
+    // Similar to animateFloating in the ZoneBot class. Makes complex zone bot "float" up and down while moving
     void animateFloating()
     {
         float yPos = floatHeight * (Mathf.Cos(floatAnimationSpeed * animationTime + MathF.PI) + 1);

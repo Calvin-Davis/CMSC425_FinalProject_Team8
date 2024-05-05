@@ -84,6 +84,8 @@ public class Controller : MonoBehaviour
         move.y = ySpeed;
         Physics.SyncTransforms();
 
+
+        // canMove is set to false when the player dies and the screen fades out
         if (!canMove)
             move = Vector3.zero;
         _controller.Move(move * Time.deltaTime * _speed);

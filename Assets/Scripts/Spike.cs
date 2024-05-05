@@ -8,7 +8,6 @@ public class Spike : MonoBehaviour
     private static CanvasGroup fadeScreen;
     private static AudioSource deathSound;
     private static bool dead;
-    private static GameObject player;
     private static Controller controller;
     private float fadeTime = 1F;
     // Note: despite the name this is not just used for spike but for any player death
@@ -18,8 +17,8 @@ public class Spike : MonoBehaviour
     {
         fadeScreen = FindObjectOfType<CanvasGroup>();
         deathSound = GameObject.Find("deathSound").GetComponent<AudioSource>();
-        dead = false;
         controller = GameObject.Find("CC").GetComponent<Controller>();
+        dead = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -28,10 +27,10 @@ public class Spike : MonoBehaviour
         //passing name of the scene died on so that the player can respawn if they choose
         if (other.gameObject.tag == "self" && !dead)
         {
-            dead = true;
-            controller.setCanMove(false);
+            dead = true; // set dead to true so that we don't try to do death actions more than once
+            controller.setCanMove(false); // make sure player can't move while we fade to black
             deathSound.PlayDelayed(0);
-            PlayerStats.ScenePlayerDiedOn = this.gameObject.scene.name;
+            PlayerStats.ScenePlayerDiedOn = gameObject.scene.name;
             StartCoroutine(FadeOutCoroutine());
         }
     }

@@ -15,7 +15,6 @@ public class Level1 : MonoBehaviour
     [SerializeField] public float _speed = 5;
     int flipCount = 0;
 
-    // Add reference to our CamController script
     public CamController camController;
     public AudioSource flipsound;
     
@@ -39,7 +38,8 @@ public class Level1 : MonoBehaviour
             flipCount = 0;
         }
 
-        //flip if allowed when player presses q
+        //flip if allowed when player presses q. Play the flip sound, do the flip
+        //animation, and swap our curent active camera.
         if(Input.GetKeyDown("q") && flipCount == 0){
             flipsound.PlayDelayed(0);
             flipCount += 1;
@@ -49,12 +49,12 @@ public class Level1 : MonoBehaviour
         }
     }
 
-    //used to flip player model over when gravity is flipped
+    //used to smoothly flip player model over when gravity is flipped
     private IEnumerator SmoothRotateCoroutine()
     {
         float elapsedTime = 0.0f;
 
-        Vector3 startRotation = CC.transform.GetChild(3).localEulerAngles;
+        Vector3 startRotation = CC.transform.GetChild(3).localEulerAngles; // initial orientation of character model
         Vector3 targetRotation = startRotation + new Vector3(180, 180, 0);
 
         while (elapsedTime < flipRotationTime)

@@ -89,7 +89,7 @@ public class ZoneBot : MonoBehaviour
         }
     }
 
-    //returns bot to center   
+    //returns bot to its original height before it started moving  
     private IEnumerator ReturnToRestCoroutine()
     {
         Vector3 direction = Vector3.zero;

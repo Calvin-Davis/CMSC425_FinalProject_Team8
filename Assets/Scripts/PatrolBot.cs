@@ -62,6 +62,7 @@ public class PatrolBot : MonoBehaviour
         animateFloating();
     }
 
+    //Similar to animateFloating() in ZoneBot class. Makes PatrolBot "float" up and down while moving
     void animateFloating()
     {
         float yPos = floatHeight * (Mathf.Cos(floatAnimationSpeed * animationTime + MathF.PI) + 1);
