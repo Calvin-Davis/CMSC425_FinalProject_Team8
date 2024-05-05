@@ -6,7 +6,7 @@ public class Controller : MonoBehaviour
     private CharacterController _controller;
     private float ySpeed, rotationTime = 0;
     private bool walking, canMove = true;
-    private Transform leftLeg, rightLeg;
+    private Transform leftLeg, rightLeg, leftArm, rightArm;
     public GameObject parent;
 
     public Transform camera;
@@ -28,6 +28,8 @@ public class Controller : MonoBehaviour
         _controller = GetComponent<CharacterController>();
         leftLeg = transform.GetChild(3).transform.GetChild(0).transform.GetChild(4);
         rightLeg = transform.GetChild(3).transform.GetChild(0).transform.GetChild(5);
+        leftArm = transform.GetChild(3).transform.GetChild(0).transform.GetChild(0);
+        rightArm = transform.GetChild(3).transform.GetChild(0).transform.GetChild(1);
     }
 
     public void setCanMove(bool option) {
@@ -103,8 +105,13 @@ public class Controller : MonoBehaviour
         if (walking) {
             audioSource.enabled = true;
             rotationTime += Time.deltaTime;
+
             leftLeg.localEulerAngles = new Vector3(Mathf.Sin(rotationTime * walkAnimationSpeed) * 45, Mathf.Sin(rotationTime * walkAnimationSpeed) * 20, 0);
             rightLeg.localEulerAngles = new Vector3(Mathf.Sin(rotationTime * walkAnimationSpeed) * -45, Mathf.Sin(rotationTime * walkAnimationSpeed) * -20, 0);
+
+            leftArm.localEulerAngles = new Vector3(0, Mathf.Sin(rotationTime * walkAnimationSpeed) * -25 - 25, 0);
+            rightArm.localEulerAngles = new Vector3(0, Mathf.Sin(rotationTime * walkAnimationSpeed) * 25 + 25, 0);
+
             if (rotationTime >= (2 * Mathf.PI / rotationTime))
                 rotationTime = 0;
         }
