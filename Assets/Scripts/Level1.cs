@@ -46,6 +46,9 @@ public class Level1 : MonoBehaviour
             flipCount += 1;
             flip = !flip;
             StartCoroutine(SmoothRotateCoroutine());
+            if(!flip) {
+                CC.transform.Translate(0, -.5f, 0);
+            }
             camController.swapCams();
         }
     }
