@@ -1,24 +1,19 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using Cinemachine;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Controller : MonoBehaviour
 {
     private CharacterController _controller;
-    private float ySpeed;
+    private float ySpeed, rotationTime = 0;
+    private bool walking, canMove = true;
+    private Transform leftLeg, rightLeg, leftArm, rightArm;
     public GameObject parent;
 
     public Transform camera;
 
     public AudioSource audioSource;
     private bool grounded = true;
-    public float rotationSpeed = 2;
-    Vector2 turn;
+    public float rotationSpeed = 2, walkAnimationSpeed = 10;
     Vector3 forwardDirection, sideDirection;
 
     [SerializeField] public float jumpSpeed = 10;
@@ -29,36 +24,19 @@ public class Controller : MonoBehaviour
         //used to keep cursor in game and invisibile so it does not block view of game
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         UnityEngine.Cursor.visible = false;
+
         _controller = GetComponent<CharacterController>();
+        leftLeg = transform.GetChild(3).transform.GetChild(0).transform.GetChild(4);
+        rightLeg = transform.GetChild(3).transform.GetChild(0).transform.GetChild(5);
+        leftArm = transform.GetChild(3).transform.GetChild(0).transform.GetChild(0);
+        rightArm = transform.GetChild(3).transform.GetChild(0).transform.GetChild(1);
     }
-    // void groundedCheck()
-    // {
-    //     float distance;
-    //     RaycastHit hit;
-    //     if(Physics.Raycast(transform.position, Vector3.down, out hit))
-    //     {
-    //         distance = hit.distance;
-    //         if(Physics.Raycast(transform.position,Vector3.down,distance + 0.1f))
-    //         {
-    //             grounded = true;
-    //         } else {
-    //             grounded = false;
-    //         }
 
-    //     } 
-    // } 
+    public void setCanMove(bool option) {
+        canMove = option;
+    }
 
-    // void MovementAudio() 
-    // {
-    //     if(Input.GetAxis("Horizontal") != 0  || Input.GetAxis("Vertical") != 0){
-    //         if(grounded){
-    //             audioSource.enabled = true;
-    //         }
-    //     } else {
-    //         audioSource.enabled = false;
-    //     }
-    // }
-
+    //used to keep player model looking in same direction as camera
     void rotateController() {
         Vector3 camdir = camera.forward;
         forwardDirection = camdir;
@@ -69,8 +47,7 @@ public class Controller : MonoBehaviour
     void Update()
     {
         rotateController();
-        // groundedCheck();
-        
+
         float _speed = parent.GetComponent<Level1>().getSpeed();
         bool flip = parent.GetComponent<Level1>().getFlip();
         
@@ -78,31 +55,17 @@ public class Controller : MonoBehaviour
         Vector3 sideMove = Vector3.Scale(new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Horizontal")), sideDirection);
 
         Vector3 move = forwardMove - sideMove;
+        
         //look at gravity.cs for more in depth explanation. this is similar code
-        //that also adds jump functionality and walking sounds for the player 
-        //when the player is determined to be grounded
+        //that also adds jump functionality when the player is determined to be grounded
         if (((_controller.collisionFlags & CollisionFlags.Above) != 0) & flip)
         {
-            //sound start
-            if(Input.GetAxis("Horizontal") != 0  || Input.GetAxis("Vertical") != 0){
-                audioSource.enabled = true;
-            } else {
-                audioSource.enabled = false;
-            }
-            //sound end
             if(Input.GetKeyDown("space")) {
                 ySpeed -= jumpSpeed;
             } else if(ySpeed > 0) {
                 ySpeed = 0.5f;
             }
         } else if(_controller.isGrounded & !flip) {
-            //sound start
-            if(Input.GetAxis("Horizontal") != 0  || Input.GetAxis("Vertical") != 0){
-                audioSource.enabled = true;
-            } else {
-                audioSource.enabled = false;
-            }
-            //sound end
             if(Input.GetKeyDown("space")) {
                 ySpeed += jumpSpeed;
             } else if(ySpeed < 0) {
@@ -111,31 +74,55 @@ public class Controller : MonoBehaviour
         } else if (((_controller.collisionFlags & CollisionFlags.Above) != 0) & !flip & ySpeed > 0) {
             //Used for edge case where someone flips gravity with high 
             //momentum right before hitting a roof/floor
-            //sound start
-            audioSource.enabled = false;
-            //sound end
             ySpeed = -0.1f;
         } else if(_controller.isGrounded & flip & ySpeed < 0) {
-            //sound start
-            audioSource.enabled = false;
-            //sound end
             ySpeed = 0.1f;
         }
         else if (!flip) {
-            //sound start
-            audioSource.enabled = false;
-            //sound end
             ySpeed += Physics.gravity.y * Time.deltaTime;
         } else {
-            //sound start
-            audioSource.enabled = false;
-            //sound end
             ySpeed -= Physics.gravity.y * Time.deltaTime;
         } 
         move.y = ySpeed;
         Physics.SyncTransforms();
+
+
+        // canMove is set to false when the player dies and the screen fades out
+        if (!canMove)
+            move = Vector3.zero;
         _controller.Move(move * Time.deltaTime * _speed);
-        //MovementAudio();
+
+        if ((move.x != 0 || move.z != 0) && (_controller.isGrounded || (_controller.collisionFlags & CollisionFlags.Above) != 0))
+            walking = true;
+        else
+            walking = false;
+
+        animateWalking();        
     }
-   
+
+    private void animateWalking() {
+        // If we are walking then rotate legs according to sine wave and play walking audio.
+        if (walking) {
+            audioSource.enabled = true;
+            rotationTime += Time.deltaTime;
+
+            leftLeg.localEulerAngles = new Vector3(Mathf.Sin(rotationTime * walkAnimationSpeed) * 45, Mathf.Sin(rotationTime * walkAnimationSpeed) * 20, 0);
+            rightLeg.localEulerAngles = new Vector3(Mathf.Sin(rotationTime * walkAnimationSpeed) * -45, Mathf.Sin(rotationTime * walkAnimationSpeed) * -20, 0);
+
+            leftArm.localEulerAngles = new Vector3(0, Mathf.Sin(rotationTime * walkAnimationSpeed) * -25 - 25, 0);
+            rightArm.localEulerAngles = new Vector3(0, Mathf.Sin(rotationTime * walkAnimationSpeed) * 25 + 25, 0);
+
+            if (rotationTime >= (2 * Mathf.PI / rotationTime))
+                rotationTime = 0;
+        }
+        // Otherwise return legs to default orientation and turn off walking audio
+        else {
+            audioSource.enabled = false;
+            leftLeg.localEulerAngles = new Vector3(0, 0, 0);
+            rightLeg.localEulerAngles = new Vector3(0, 0, 0);
+        }
+    }
+
+    
 }
+

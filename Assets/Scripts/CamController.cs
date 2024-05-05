@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 
+
+/*
+The purpose of this script is to switch between our two different Cinemachine cameras when the player
+flips gravity. Which cinemachine camera is active depends on its current priority, so the this script
+swaps active cameras by changing their priorities
+*/
 public class CamController : MonoBehaviour
 {
     public CinemachineFreeLook unflippedCam;
@@ -12,6 +18,8 @@ public class CamController : MonoBehaviour
     void Start()
     {
         currentCam = startCam;
+
+        // Set the correct priorities based on the selected startCam
         setCamPriorities();
     }
 

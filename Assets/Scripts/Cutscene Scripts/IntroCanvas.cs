@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+// Script used to manage the text pop-ups in the Intro cutscene.
 public class IntroCanvas : MonoBehaviour, ISignalReceiver
 {
     public TextMeshProUGUI tmp;

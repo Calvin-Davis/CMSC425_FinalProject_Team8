@@ -18,6 +18,7 @@ public class TutorialCollider : MonoBehaviour
         
     }
 
+    //Used to know when to display the tutorial messages
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "self")

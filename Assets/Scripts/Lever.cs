@@ -30,18 +30,22 @@ public class Lever : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //set lever to strating pos (can be on or off depeending on startOn)
         on = startOn;
         onPos = Quaternion.Euler(0, 90, -90 - turnRadius);
         offPos = Quaternion.Euler(0, 90, -90 + turnRadius);
 
         handle.localRotation = startOn ? onPos : offPos;
 
+        //pulls object that lever is supposed to impact
         receiver = receiverObject.GetComponent<ILeverInteractable>();
         if (receiver == null)
         {
             Debug.LogWarning("The receiver does not implement ILeverInteractable!", this);
         }
 
+        //puts object the lever modifies in base state (which state this is depends on
+        //starOn)
         if (wireParent != null)
         {
             wireRenderers = new List<Renderer>();
@@ -66,6 +70,9 @@ public class Lever : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //variable used to keep player from hitting the lever twice in one jump
+        //QOL as in testing it was found to be very annoying to be able to hit
+        //the lever once on the way up and down on accident
         if (!schmactive && (CC.isGrounded || ((CC.collisionFlags & CollisionFlags.Above) != 0)))
         {
             schmactive = true;
@@ -74,7 +81,8 @@ public class Lever : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
+        //flips reciever to opposite state when lever and changes lever position
+        //(i.e. up or down) when lever is hit
         if (schmactive) {
             schmactive = false;
             leverSound.Play();

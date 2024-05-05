@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.XR;
@@ -7,15 +8,18 @@ using UnityEngine.AI;
 public class ComplexZoneBot : MonoBehaviour
 {
     public Transform[] goals;
-    private int idx;
+    private int idx, inverse = 1;
+    private float animationTime = 0;
+    private bool prevInRange;
+    private Renderer eyeRenderer;
     private NavMeshAgent agent;
     public bool isCyclic = true;
-    private int inverse = 1;
-    public float botSpeed = 5;
     public bool resting = true;
     public GameObject player;
-    public float radius = 1;
+    public float botSpeed = 5, radius = 1, floatHeight = 0.4F, floatAnimationSpeed = 5F;
     public Transform defaultGoal;
+    public Material neutralEyeColor, pursuitEyeColor;
+    public AudioSource alertSound;
     
     // Start is called before the first frame update
     void Start()
@@ -24,6 +28,9 @@ public class ComplexZoneBot : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.speed = botSpeed;
         agent.destination = goals[idx].position;
+
+        eyeRenderer = transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).GetComponent<Renderer>();
+        setEyeColor(neutralEyeColor);
     }
 
     // Update is called once per frame
@@ -46,6 +53,15 @@ public class ComplexZoneBot : MonoBehaviour
             } else {
                 inRange = false;
             }
+        }
+
+        if (inRange && !prevInRange) {
+            setEyeColor(pursuitEyeColor);
+            alertSound.PlayDelayed(0);
+        }
+
+        else if (!inRange && prevInRange) {
+            setEyeColor(neutralEyeColor);
         }
 
         //follow set node path or if player in range then tarher player
@@ -82,5 +98,25 @@ public class ComplexZoneBot : MonoBehaviour
                 agent.destination = defaultGoal.position;
              }
         }
+
+        animateFloating();
+
+        prevInRange = inRange;
+    }
+
+    void setEyeColor(Material color) {
+        eyeRenderer.material = color;
+    }
+
+    // Similar to animateFloating in the ZoneBot class. Makes complex zone bot "float" up and down while moving
+    void animateFloating()
+    {
+        float yPos = floatHeight * (Mathf.Cos(floatAnimationSpeed * animationTime + MathF.PI) + 1);
+        transform.position = new Vector3(transform.position.x, transform.position.y + yPos, transform.position.z);
+
+        if (animationTime >= 2 * MathF.PI / floatAnimationSpeed)
+            animationTime = 0;
+
+        animationTime += Time.deltaTime;
     }
 }

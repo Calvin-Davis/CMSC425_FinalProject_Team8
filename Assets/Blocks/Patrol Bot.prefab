@@ -55,6 +55,7 @@ MonoBehaviour:
   - {fileID: 0}
   isCyclic: 1
   botSpeed: 5
+  eyeColor: {fileID: 5033703511601670329, guid: 5c9de239ea0674983990b30a625d1593, type: 3}
 --- !u!195 &451346606603752081
 NavMeshAgent:
   m_ObjectHideFlags: 0

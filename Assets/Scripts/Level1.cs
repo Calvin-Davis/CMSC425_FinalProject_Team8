@@ -11,10 +11,10 @@ public class Level1 : MonoBehaviour
 
     public bool flip = false;
     public CharacterController CC;
+    public float flipRotationTime = 0.5F;
     [SerializeField] public float _speed = 5;
     int flipCount = 0;
 
-    // Add reference to our CamController script
     public CamController camController;
     public AudioSource flipsound;
     
@@ -29,20 +29,45 @@ public class Level1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //reset flip count if player hits ground. flipCount used to keep player
+        //from flipping more than once in the air as infinite flips in air would
+        //allow player to fly. Making flipCount an int instead of bool allows
+        //possible later implementation of levels where you can flip a couple of
+        //times in the air before needing to reset the flip count.
         if(CC.isGrounded || ((CC.collisionFlags & CollisionFlags.Above) != 0)){
             flipCount = 0;
-
         }
+
+        //flip if allowed when player presses q. Play the flip sound, do the flip
+        //animation, and swap our curent active camera.
         if(Input.GetKeyDown("q") && flipCount == 0){
             flipsound.PlayDelayed(0);
             flipCount += 1;
-            if(flip) {
-                CC.transform.Translate(0, -1f, 0);
-                Physics.SyncTransforms();
-            }
             flip = !flip;
-            CC.transform.GetChild(3).localEulerAngles = new Vector3(180+ CC.transform.GetChild(3).localEulerAngles.x, 180 + CC.transform.GetChild(3).localEulerAngles.y, CC.transform.GetChild(3).localEulerAngles.z);
+            StartCoroutine(SmoothRotateCoroutine());
             camController.swapCams();
         }
+    }
+
+    //used to smoothly flip player model over when gravity is flipped
+    private IEnumerator SmoothRotateCoroutine()
+    {
+        float elapsedTime = 0.0f;
+
+        Vector3 startRotation = CC.transform.GetChild(3).localEulerAngles; // initial orientation of character model
+        Vector3 targetRotation = startRotation + new Vector3(180, 180, 0);
+
+        while (elapsedTime < flipRotationTime)
+        {
+            // Interpolate rotation smoothly over time
+            CC.transform.GetChild(3).localEulerAngles = Vector3.Lerp(startRotation, targetRotation, elapsedTime / flipRotationTime);
+
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+
+        // make sure model gets to correct orientation
+        CC.transform.GetChild(3).localEulerAngles = startRotation + new Vector3(180, 180, 0);
     }
 }
