@@ -14,6 +14,7 @@ public class Level1 : MonoBehaviour
     public float flipRotationTime = 0.5F;
     [SerializeField] public float _speed = 5;
     int flipCount = 0;
+    bool inRotation = false;
 
     public CamController camController;
     public AudioSource flipsound;
@@ -34,7 +35,7 @@ public class Level1 : MonoBehaviour
         //allow player to fly. Making flipCount an int instead of bool allows
         //possible later implementation of levels where you can flip a couple of
         //times in the air before needing to reset the flip count.
-        if(CC.isGrounded || ((CC.collisionFlags & CollisionFlags.Above) != 0)){
+        if((CC.isGrounded || ((CC.collisionFlags & CollisionFlags.Above) != 0)) && !inRotation){
             flipCount = 0;
         }
 
@@ -53,7 +54,7 @@ public class Level1 : MonoBehaviour
     private IEnumerator SmoothRotateCoroutine()
     {
         float elapsedTime = 0.0f;
-
+        inRotation = true;
         Vector3 startRotation = CC.transform.GetChild(3).localEulerAngles; // initial orientation of character model
         Vector3 targetRotation = startRotation + new Vector3(180, 180, 0);
 
@@ -66,8 +67,9 @@ public class Level1 : MonoBehaviour
 
             yield return null;
         }
-
+        
         // make sure model gets to correct orientation
         CC.transform.GetChild(3).localEulerAngles = startRotation + new Vector3(180, 180, 0);
+        inRotation = false;
     }
 }
