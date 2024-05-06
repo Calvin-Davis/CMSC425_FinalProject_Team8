@@ -7,6 +7,7 @@ public class TutorialMessages : MonoBehaviour
 {
     public TextMeshProUGUI tmp;
     public string[] strings;
+    public AudioSource talkSound;
     private int idx = 0;
 
     // Start is called before the first frame update
@@ -24,6 +25,12 @@ public class TutorialMessages : MonoBehaviour
     //Displays tutorial text as player moves through tutorial
     public void progress()
     {
+        if (talkSound.isPlaying)
+        {
+            talkSound.Stop();
+        }
+        talkSound.pitch = Random.Range(0.9f, 1.2f);
+        talkSound.Play();
         tmp.SetText(strings[++idx]);
     }
 }

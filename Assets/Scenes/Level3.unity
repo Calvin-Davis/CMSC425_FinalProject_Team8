@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 21287245}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Goal1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 29366578}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,7 +321,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 48933603}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Goal2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1604,7 +1604,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 412791169}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1974,7 +1974,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 556814098}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Goal1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2005,7 +2005,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 560055641}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Goal2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2101,19 +2101,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2361286657082688088, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9901371
+      value: 0.99013704
       objectReference: {fileID: 0}
     - target: {fileID: 2361286657082688088, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.1390162
+      value: 0.13901621
       objectReference: {fileID: 0}
     - target: {fileID: 2361286657082688088, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.014628004
+      value: 0.014628008
       objectReference: {fileID: 0}
     - target: {fileID: 2361286657082688088, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.009443163
+      value: -0.009443166
       objectReference: {fileID: 0}
     - target: {fileID: 2437615683187185457, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_Pivot.x
@@ -2249,11 +2249,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3408008721810332343, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.058140084
+      value: -0.058140077
       objectReference: {fileID: 0}
     - target: {fileID: 3408008721810332343, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.012815321
+      value: 0.012815319
       objectReference: {fileID: 0}
     - target: {fileID: 5623068604362151861, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2277,11 +2277,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5623068604362151861, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.048918184
+      value: -0.048918147
       objectReference: {fileID: 0}
     - target: {fileID: 5623068604362151861, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0039825607
+      value: 0.003982557
       objectReference: {fileID: 0}
     - target: {fileID: 5927229868886173009, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: parent
@@ -2341,7 +2341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7844123250271099079, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.009042036
+      value: -0.009042034
       objectReference: {fileID: 0}
     - target: {fileID: 8416148613555858066, guid: 695321e883f7835439831fefecb248b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4100,6 +4100,14 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1686587743258061347, guid: d604ebab4073598498a9d97efebb158d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2925169712187683762, guid: d604ebab4073598498a9d97efebb158d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3031645494412361535, guid: d604ebab4073598498a9d97efebb158d, type: 3}
       propertyPath: goals.Array.size
       value: 2
@@ -4156,9 +4164,25 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5014290259819156731, guid: d604ebab4073598498a9d97efebb158d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400543697013903901, guid: d604ebab4073598498a9d97efebb158d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5997737838222610813, guid: d604ebab4073598498a9d97efebb158d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6358316561290197711, guid: d604ebab4073598498a9d97efebb158d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7445042011434348112, guid: d604ebab4073598498a9d97efebb158d, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8071917104307450758, guid: d604ebab4073598498a9d97efebb158d, type: 3}
       propertyPath: audioSource
@@ -4175,6 +4199,10 @@ PrefabInstance:
     - target: {fileID: 9087412169177761732, guid: d604ebab4073598498a9d97efebb158d, type: 3}
       propertyPath: m_Name
       value: Patrol Bot
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087412169177761732, guid: d604ebab4073598498a9d97efebb158d, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9087412169177761732, guid: d604ebab4073598498a9d97efebb158d, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -4792,7 +4820,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1267870999}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bot inverse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5403,7 +5431,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1410020861}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Goal2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6408,7 +6436,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1812398267}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6562,6 +6590,14 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1686587743258061347, guid: d604ebab4073598498a9d97efebb158d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2925169712187683762, guid: d604ebab4073598498a9d97efebb158d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3031645494412361535, guid: d604ebab4073598498a9d97efebb158d, type: 3}
       propertyPath: goals.Array.size
       value: 2
@@ -6618,9 +6654,25 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5014290259819156731, guid: d604ebab4073598498a9d97efebb158d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400543697013903901, guid: d604ebab4073598498a9d97efebb158d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5997737838222610813, guid: d604ebab4073598498a9d97efebb158d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6358316561290197711, guid: d604ebab4073598498a9d97efebb158d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7445042011434348112, guid: d604ebab4073598498a9d97efebb158d, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8071917104307450758, guid: d604ebab4073598498a9d97efebb158d, type: 3}
       propertyPath: audioSource
@@ -6637,6 +6689,10 @@ PrefabInstance:
     - target: {fileID: 9087412169177761732, guid: d604ebab4073598498a9d97efebb158d, type: 3}
       propertyPath: m_Name
       value: Patrol Bot
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087412169177761732, guid: d604ebab4073598498a9d97efebb158d, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9087412169177761732, guid: d604ebab4073598498a9d97efebb158d, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -6781,6 +6837,14 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1686587743258061347, guid: d604ebab4073598498a9d97efebb158d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2925169712187683762, guid: d604ebab4073598498a9d97efebb158d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3031645494412361535, guid: d604ebab4073598498a9d97efebb158d, type: 3}
       propertyPath: goals.Array.size
       value: 2
@@ -6837,9 +6901,25 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5014290259819156731, guid: d604ebab4073598498a9d97efebb158d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400543697013903901, guid: d604ebab4073598498a9d97efebb158d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5997737838222610813, guid: d604ebab4073598498a9d97efebb158d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6358316561290197711, guid: d604ebab4073598498a9d97efebb158d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7445042011434348112, guid: d604ebab4073598498a9d97efebb158d, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8071917104307450758, guid: d604ebab4073598498a9d97efebb158d, type: 3}
       propertyPath: audioSource
@@ -6856,6 +6936,10 @@ PrefabInstance:
     - target: {fileID: 9087412169177761732, guid: d604ebab4073598498a9d97efebb158d, type: 3}
       propertyPath: m_Name
       value: Patrol Bot
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087412169177761732, guid: d604ebab4073598498a9d97efebb158d, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9087412169177761732, guid: d604ebab4073598498a9d97efebb158d, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7425,7 +7509,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1963869106}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Goal1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8092,7 +8176,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 119
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -8103,7 +8187,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 60397a42246a9db47bb8dd16f7020e75, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 37d2a94db68c912458e102de075b5c2d, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1001 &2137654966
 PrefabInstance:
