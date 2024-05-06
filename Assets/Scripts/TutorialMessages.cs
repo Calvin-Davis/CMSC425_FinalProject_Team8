@@ -14,6 +14,8 @@ public class TutorialMessages : MonoBehaviour
     void Start()
     {
         tmp.SetText(strings[0]);
+        talkSound.pitch = Random.Range(0.9f, 1.2f);
+        talkSound.Play();
     }
 
     // Update is called once per frame
