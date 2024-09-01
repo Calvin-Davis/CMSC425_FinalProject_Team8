@@ -1,5 +1,5 @@
 # Unity 3D Platformer: The Incident of Day 425
-Escape from evil robots (roguebots) that have infested your ship as you run, jump, and invert gravity through a series of platforming/puzzle challenges!
+Escape from evil robots (roguebots) that have infested your spacecraft as you run, jump, and invert gravity through a series of platforming/puzzle challenges!
 
 <img width="900" alt="Screenshot 2024-09-01 at 1 00 47 PM" src="https://github.com/user-attachments/assets/3616f2d5-7840-453e-a8b9-45e066fa2294">
 <img width="900" alt="Screenshot 2024-09-01 at 1 00 26 PM" src="https://github.com/user-attachments/assets/cc892578-7841-49bf-a358-3be753a937db">
